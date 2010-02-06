@@ -1,0 +1,18 @@
+body  {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration:none;
+	color:#000000;
+	}
+td               {font-size:1px;font-weight:lighter;}
+.scan_bild  {position:absolute;left:<?php echo $position_left; ?>px;top:<?php echo $position_top; ?>px; width:<?php echo $PREVIEW_WIDTH_PX; ?>px;height:<?php echo $PREVIEW_HEIGHT_PX; ?>px;border-color:red;}
+.links_oben   {position:absolute; left:0px; top:0px; width:<?php echo $position_width; ?>px; }
+.text            {font-size:13px;font-weight:lighter;}
+.text_input      {font-size:13px;font-weight:lighter;}
+.text_padd_variabel  {font-size:13px;font-weight:<?php echo $style_bold ?>;padding-top:2px;padding-bottom:2px;color:<?php echo $style_color ?>;text-align:<?php echo $style_center; ?>}
+.text_padd       {font-size:13px;font-weight:lighter;padding-top:2px;padding-bottom:2px;}
+.text_klein      {font-size:10px;font-weight:lighter;}
+.text_achtung    {font-size:36px;font-weight:bold;color:red;}
+.achtung         {font-size:26px;font-weight:bold;color:red;}
+.text_red        {font-size:13px;font-weight:lighter;color:red;}
+.titel           {font-size:14px;font-weight:bold;}
+.ecke_rot1       {color:red;}

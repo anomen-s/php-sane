@@ -1,10 +1,10 @@
-   phpSANE   (Version 0.3.1)
+   phpSANE   (Version 0.3.3)
   ~~~~~~~~~
 
 phpSANE is a web-based frontend for SANE written in PHP.
 Now you can scan with your web-browser, too.
 
-Copyright (C) 2003  David Fröhlich <dfroe@gmx.de>
+Copyright (C) 2005  David Fröhlich <dfroe@gmx.de>
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -26,39 +26,16 @@ Requirements:
 * Apache web-server with PHP-support
 * gocr (optional)
 
-Automatic Installation:
-^^^^^^^^^^^^^^^^^^^^^^^
-It is recommended that you use the automatic installation.
-To do this, you must execute ./install.sh as root.
-If the automatic installation fails, please use the manual installation.
-
-Manual Installation:
-^^^^^^^^^^^^^^^^^^^^
- 1) Copy the phpSANE-directory so your apache can access it.
-    e.g.: "cp -R phpSANE /var/www/html/"
- 2) Change to this directory.
-    e.g.: "cd /var/www/html/phpSANE/"
- 3) Change the owner of all files in this directory to the user under which your
-    apache runs.
-    e.g.: "chown -R www-data:www-data ."
- 4) Guarantee that only your apache has access to .htaccess and tmp.
-    e.g.: "chmod 0600 .htaccess; chmod 0700 tmp"
- 5) Then you must change some things in the config.php.
-    e.g.: "vi config.php"
- 6) Normally you can skip points 7 up to 11 except you have not
-    installed your programs like scanimage into /usr/bin.
- 7) Change $SANE_FIND_SCANNER to the output of "which sane-find-scanner".
- 8) Change $SCANIMAGE to the output of "which scanimage".
- 9) Change $PNMTOTIFF to the output of "which pnmtotiff".
-10) Change $PNMTOJPEG to the output of "which pnmtojpeg".
-11) Change $GOCR to  the output of "which gocr".
-12) Change $PHPSANE_ROOT to `pwd`.
-13) phpSANE is configured that only users which are in the subnet
-    192.168.0.0/255.255.255.0 and in the group phpSANE have access to phpSANE.
-    To change this edit the .htaccess-file.
+Installation:
+^^^^^^^^^^^^^
+Just copy the phpSANE-directory into your www-root.
+Make sure that the directory "phpSANE/tmp" is writable by your
+apache-user.
+Then you can scan by opening phpsane.php in your web-browser.
 
 FAQ:
 ^^^^
-Q: phpSANE says that no scanners were found.
+Q: My scanner isn't found by phpSANE.
 A: Make sure that your apache user is able to scan with scanimage.
    Your apache user must have write-access to your scanner device, too.
+   Another way to solve this problem is installing scanimage +suid-root.

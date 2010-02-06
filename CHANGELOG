@@ -20,3 +20,13 @@
 * 0.3.2
 	- Fixed bug #1086548
 
+* 0.3.3
+	- Some feature enhancements by Stefan Bernshausen <stefan@bernshausen.org>
+
+* 0.4.0
+	- Fixed bug #1104508
+	- Supports feature #1104513
+	- Code cleaned up.
+
+* 0.4.1
+	- phpSANE now works without register_global
