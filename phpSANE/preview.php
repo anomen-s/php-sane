@@ -1,28 +1,29 @@
 <?PHP
 
-if($preview == "1") {
-
-}
-
 echo "<form name=\"previewForm\" action=\"phpsane.php\" method=get>\n";
+echo "<input type=hidden name=\"lang\" value=\"".$lang."\">\n";
 echo "<input type=hidden name=\"aktion\" value=\"scan\">\n";
 echo "<input type=hidden name=\"sid\" value=\"$sid\">\n";
 echo "<input type=hidden name=\"scanner\" value=\"$scanner\">\n";
 echo "<table>\n";
 echo "<tr><td>\n";
-echo "<b>X-Offset:</b>\n";
+if($lang=="en") echo "<b>X-Offset:</b>\n";
+if($lang=="de") echo "<b>Links:</b>\n";
 echo "</td><td>\n";
 echo "<input type=text name=\"geometry_l\" value=\"0\" size=4 maxlength=3>&nbsp;mm\n";
 echo "</td></tr><tr><td>\n";
-echo "<b>Y-Offset:</b>\n";
+if($lang=="en") echo "<b>Y-Offset:</b>\n";
+if($lang=="de") echo "<b>Oben:</b>\n";
 echo "</td><td>\n";
 echo "<input type=text name=\"geometry_t\" value=\"0\" size=4 maxlength=3>&nbsp;mm\n";
 echo "</td></tr><tr><td>\n";
-echo "<b>Width:</b>\n";
+if($lang=="en") echo "<b>Width:</b>\n";
+if($lang=="de") echo "<b>Breite:</b>\n";
 echo "</td><td>\n";
 echo "<input type=text name=\"geometry_x\" value=\"0\" size=4 maxlength=3>&nbsp;mm\n";
 echo "</td></tr><tr><td>\n";
-echo "<b>Height:</b>\n";
+if($lang=="en") echo "<b>Height:</b>\n";
+if($lang=="de") echo "<b>H&ouml;he:</b>\n";
 echo "</td><td>\n";
 echo "<input type=text name=\"geometry_y\" value=\"0\" size=4 maxlength=3>&nbsp;mm\n";
 echo "</td></tr><tr><td colspan=2>\n";
@@ -38,20 +39,21 @@ echo "//-->\n";
 echo "</script>\n";
 echo "<a href=\"javascript:setGeometry('0','0','210','297')\">DIN-A4</a>\n";
 echo "</td></tr><tr><td>\n";
-echo "<b>Resolution:</b>\n";
+if($lang=="en") echo "<b>Resolution:</b>\n";
+if($lang=="de") echo "<b>Aufl&ouml;sung:</b>\n";
 echo "</td><td>\n";
 echo "<input type=text name=\"resolution\" value=\"150\" size=4 maxlength=3>&nbsp;DPI\n";
 echo "</td></tr><tr><td>\n";
 echo "<b>Modus:</b>\n";
 echo "</td><td>\n";
 echo "<select name=\"mode\" size=1>\n";
-echo "<option value=\"Lineart\">Lineart\n";
-echo "<option value=\"Gray\" selected>Gray\n";
-echo "<option value=\"Color\">Color\n";
+if($lang=="en") echo "<option value=\"Lineart\">b/w\n<option value=\"Gray\" selected>Gray\n<option value=\"Color\">Color\n";
+if($lang=="de") echo "<option value=\"Lineart\">s/w\n<option value=\"Gray\" selected>Grau\n<option value=\"Color\">Farbe\n";
 echo "</select>\n";
 echo "</td></tr><tr><td colspan=2>\n";
 echo "<br>\n";
-echo "<input type=reset value=\"Clear\"><br><input type=submit value=\"Scan\">\n";
+if($lang=="en") echo "<input type=reset value=\"Reset\"><br><input type=submit value=\"Scan\">\n";
+if($lang=="de") echo "<input type=reset value=\"Zur&uuml;cksetzen\"><br><input type=submit value=\"Scannnen\">\n";
 echo "</td></tr>\n";
 echo "</table>\n";
 echo "</form>\n";

@@ -12,19 +12,24 @@ $cmd_pnmtotiff = $PNMTOTIFF." -none ".$file_pnm." >".$file_tiff;
 $cmd_copy = "cp $file_src $file_tgt";
 $cmd_clean = "rm -f ".$TMP_PRAEFIX."_".$sid."*";
 
-echo "Scan in progress ...<br>\n";
+if($lang=="en") echo "Scanning ...<br>\n";
+if($lang=="de") echo "Scanne ...<br>\n";
 $scan=`$cmd_scan`;
-echo "Converting into TIFF ...<br>\n";
+if($lang=="en") echo "Converting to TIFF ...<br>\n";
+if($lang=="de") echo "Wandle in TIFF ...<br>\n";
 $pnmtotiff=`$cmd_pnmtotiff`;
-echo "Copying und deleting temporary files ...<br>\n";
+if($lang=="en") echo "Copying and deleting temporary files ...<br>\n";
+if($lang=="de") echo "Kopiere und l&ouml;sche tempor&auml;re Dateien ...<br>\n";
 $copy=`$cmd_copy`;
 $clean=`$cmd_clean`;
 
 echo "<br>\n";
-echo "You can download the picture at the following URL:<br>\n";
+if($lang=="en") echo "You can download the image under the following URL:<br>\n";
+if($lang=="de") echo "Sie k&ouml;nnen das gescannte Bild unter folgender URL abrufen:<br>\n";
 echo "<a href=\"$file_url\"><tt>$file_url</tt></a><br>\n";
 
 echo "<br>\n";
-echo "Download the picture and then you can <a href=\"phpsane.php?aktion=clean&sid=$sid\">delete all temporary files</a>.<br>\n";
+if($lang=="en") echo "Save the image and then you can <a href=\"phpsane.php?lang=$lang&aktion=clean&sid=$sid\">delete all temporary files</a>.<br>\n";
+if($lang=="de") echo "Speichern Sie das Bild lokal ab, danach k&ouml;nnen Sie <a href=\"phpsane.php?lang=$lang&aktion=clean&sid=$sid\">den Scanvorgang abschlie&szlig;en</a>.<br>\n";
 
 ?>

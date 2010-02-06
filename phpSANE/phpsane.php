@@ -13,28 +13,14 @@
 
 <?PHP
 include("config.php");
+if(!$lang) $lang="en";
 
-if($aktion == "") {
-echo "<font size=\"+1\">With phpSANE you can scan with you web-browser!</font><br>\n";
-echo "<br>\n";
-echo "Turn on your scanner and put the page you would scan into your scanner.<br>\n";
-echo "<form action=\"phpsane.php\" method=get>\n";
-echo "<input type=hidden name=\"aktion\" value=\"preview\">\n";
-echo "<input type=hidden name=\"sid\" value=\"".time()."\">\n";
-echo "<br>\n";
-echo "<table>\n";
-echo "<tr><td>\n";
-echo "<b>Scanner:</b>\n";
-echo "</td><td>\n";
-echo "<select name=\"scanner\" size=1>\n";
-while(list($name,$device) = each($SCANNER)) echo "<option value=\"$device\">$name\n";
-echo "</select>\n";
-echo "</td></tr><tr><td colspan=2>\n";
-echo "<div align=center><input type=submit value=\"Next\"></div>\n";
-echo "</tr><td>\n";
-echo "</table>\n";
+if($aktion) include($aktion.".php");
+else {
+$start_url="phpsane.php?lang=".$lang."&aktion=start";
+if($lang=="en") echo "<font size=\"+1\">Turn on your scanner and <a href=\"$start_url\">continue</a>.</font><br>\n";
+if($lang=="de") echo "<font size=\"+1\">Schalten Sie Ihren Scanner an. Dann k&ouml;nnen Sie den Vorgang <a href=\"$start_url\">fortsetzen</a>.</font><br>\n";
 }
-else include($aktion.".php");
 
 ?>
 
