@@ -1,4 +1,4 @@
-   phpSANE   (Version 0.2.0)
+   phpSANE   (Version 0.3.0)
   ~~~~~~~~~
 
 phpSANE ist ein in PHP geschriebenes web-basierendes Frontend für SANE.
@@ -24,6 +24,7 @@ Voraussetzungen:
 * SANE
 * netpbm
 * Apache web-server mit PHP-Unterstützung
+* gocr (optional)
 
 Automatische Installation:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,7 +50,8 @@ Manuelle Installation:
  7) Ändern Sie $SCANIMAGE in `which scanimage`.
  8) Ändern Sie $PNMTOTIFF in `which pnmtotiff`.
  9) Ändern Sie $PNMTOJPEG in `which pnmtojpeg`.
-10) Ändern Sie $PHPSANE_ROOT in `which pwd`.
-11) phpSANE ist konfiguriert, dass nur Benutzer, die im Subnet
+10) Ändern Sie $GOCR in `which gocr`.
+11) Ändern Sie $PHPSANE_ROOT in `which pwd`.
+12) phpSANE ist konfiguriert, dass nur Benutzer, die im Subnet
     192.168.0.0/255.255.255.0 und in der Gruppe phpSANE sind, Zugriff auf phpSANE
     haben. Um dies zu ändern, müssen Sie die Datei .htaccess editieren.

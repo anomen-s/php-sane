@@ -4,6 +4,7 @@ $SANE_FIND_SCANNER="/usr/bin/sane-find-scanner";
 $SCANIMAGE="/usr/bin/scanimage";
 $PNMTOTIFF="/usr/bin/pnmtotiff";
 $PNMTOJPEG="/usr/bin/pnmtojpeg";
+$GOCR="/usr/bin/gocr";
 $SCAN_SPEED="Fastest";
 
 $PHPSANE_ROOT="/var/www/html/users/bilder/phpSANE";

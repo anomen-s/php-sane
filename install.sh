@@ -10,19 +10,23 @@ if [ `which apache` ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 
 echo -n "Checking for sane-find-scanner ... "
 sane_find_scanner=`which sane-find-scanner`
-if [ $sane_find_scanner ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+if [ "$sane_find_scanner" ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 
 echo -n "Checking for scanimage ... "
 scanimage=`which scanimage`
-if [ $scanimage ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+if [ "$scanimage" ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 
 echo -n "Checking for pnmtotiff ... "
 pnmtotiff=`which pnmtotiff`
-if [ $pnmtotiff ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+if [ "$pnmtotiff" ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 
 echo -n "Checking for pnmtojpeg ... "
 pnmtojpeg=`which pnmtojpeg`
-if [ $pnmtojpeg ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+if [ "$pnmtojpeg" ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+
+echo -n "Checking for gocr ... "
+gocr=`which gocr`
+if [ "$gocr" ] ; then echo OK ; else echo Failed ; fi
 
 echo -n "Checking for apache php-module \"libphp4.so\" ... "
 if [ `locate libphp4.so` ] ; then echo OK ; else echo Failed&&exit -1 ; fi
