@@ -1,0 +1,49 @@
+   phpSANE
+  ~~~~~~~~~
+
+phpSANE ist ein in PHP geschriebenes web-basierendes Frontend für SANE.
+Jetzt können Sie auch mit Ihrem Web-Browser scannen.
+
+Copyright (C) 2003  David Fröhlich
+
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU
+General Public License, wie von der Free Software Foundation veröffentlicht,
+weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder
+(nach Ihrer Option) jeder späteren Version.
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von
+Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK.
+Details finden Sie in der GNU General Public License.
+Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
+Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+
+
+Voraussetzungen:
+^^^^^^^^^^^^^
+* SANE
+* netpbm
+* Apache web-server mit PHP-Unterstützung
+
+Installation:
+^^^^^^^^^^^^^
+ 1) Kopieren Sie das phpSANE-Verzeichnis in ein Verzeichnis, auf das Ihr Apache
+    zugreifen kann.
+    z.B.: "cp -R phpSANE /var/www/html/"
+ 2) Wechseln Sie in dieses Verzeichnis.
+    z.B.: "cd /var/www/html/phpSANE/"
+ 3) Setzen Sie den Besitzer aller Dateien in diesem Verzeichnis auf den Benutzer,
+    unter dem Ihr Apache läuft.
+    z.B.: "chown -R www-data:www-data ."
+ 4) Stellen Sie sicher, dass nur Ihr Apache auf die Dateien .htaccess und tmp
+    zugreifen kann.
+    z.B.: "chmod 0600 .htaccess; chmod 0700 tmp"
+ 5) Jetzt müssen Sie ein paar Änderungen in der config.php vornehmen.
+    z.B.: "vi config.php"
+ 6) Ändern Sie $SANE_FIND_SCANNER in `which sane-find-scanner`.
+ 7) Ändern Sie $SCANIMAGE in `which scanimage`.
+ 8) Ändern Sie $PNMTOTIFF in `which pnmtotiff`.
+ 9) Ändern Sie $PHPSANE_ROOT in `which pwd`.
+10) phpSANE ist konfiguriert, dass nur Benutzer, die im Subnet
+    192.168.0.0/255.255.255.0 und in der Gruppe phpSANE sind, Zugriff auf phpSANE
+    haben. Um dies zu ändern, müssen Sie die Datei .htaccess editieren.

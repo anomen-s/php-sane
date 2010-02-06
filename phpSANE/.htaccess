@@ -1,0 +1,5 @@
+Order deny,allow
+Deny from All
+Allow from 192.168.0.0/255.255.255.0
+require group phpSANE
+

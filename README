@@ -1,0 +1,47 @@
+   phpSANE
+  ~~~~~~~~~
+
+phpSANE is a web-based frontend for SANE written in PHP.
+Now you can scan with your web-browser, too.
+
+Copyright (C) 2003  David Fröhlich
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version.
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc., 59
+Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+
+
+Requirements:
+^^^^^^^^^^^^^
+* SANE
+* netpbm
+* Apache web-server with PHP-support
+
+Installation:
+^^^^^^^^^^^^^
+ 1) Copy the phpSANE-directory so your apache can access it.
+    e.g.: "cp -R phpSANE /var/www/html/"
+ 2) Change to this directory.
+    e.g.: "cd /var/www/html/phpSANE/"
+ 3) Change the owner of all files in this directory to the user under which your
+    apache runs.
+    e.g.: "chown -R www-data:www-data ."
+ 4) Guarantee that only your apache has access to .htaccess and tmp.
+    e.g.: "chmod 0600 .htaccess; chmod 0700 tmp"
+ 5) Then you must change some things in the config.php.
+    e.g.: "vi config.php"
+ 6) Change $SANE_FIND_SCANNER to `which sane-find-scanner`.
+ 7) Change $SCANIMAGE to `which scanimage`.
+ 8) Change $PNMTOTIFF to `which pnmtotiff`.
+ 9) Change $PHPSANE_ROOT to `pwd`.
+10) phpSANE is configured that only users which are in the subnet
+    192.168.0.0/255.255.255.0 and in the group phpSANE have access to phpSANE.
+    To change this edit the .htaccess-file.
