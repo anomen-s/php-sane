@@ -1,18 +1,216 @@
-body  {
-	font-family: Arial, Verdana, Helvetica, sans-serif;
-	text-decoration:none;
-	color:#000000;
-	}
-td               {font-size:1px;font-weight:lighter;}
-.scan_bild  {position:absolute;left:<?php echo $position_left; ?>px;top:<?php echo $position_top; ?>px; width:<?php echo $PREVIEW_WIDTH_PX; ?>px;height:<?php echo $PREVIEW_HEIGHT_PX; ?>px;border-color:red;}
-.links_oben   {position:absolute; left:0px; top:0px; width:<?php echo $position_width; ?>px; }
-.text            {font-size:13px;font-weight:lighter;}
-.text_input      {font-size:13px;font-weight:lighter;}
-.text_padd_variabel  {font-size:13px;font-weight:<?php echo $style_bold ?>;padding-top:2px;padding-bottom:2px;color:<?php echo $style_color ?>;text-align:<?php echo $style_center; ?>}
-.text_padd       {font-size:13px;font-weight:lighter;padding-top:2px;padding-bottom:2px;}
-.text_klein      {font-size:10px;font-weight:lighter;}
-.text_achtung    {font-size:36px;font-weight:bold;color:red;}
-.achtung         {font-size:26px;font-weight:bold;color:red;}
-.text_red        {font-size:13px;font-weight:lighter;color:red;}
-.titel           {font-size:14px;font-weight:bold;}
-.ecke_rot1       {color:red;}
+body, table, input, select, textarea
+{
+  font-size: 10pt;
+  line-height: 110%;
+}
+
+body, table, input, select, textarea
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+  text-decoration: none;
+}
+
+body
+{
+  color: #000000;
+  background: #ffffff;
+
+  margin: 0.75em;
+  border: 0em;
+  padding: 0em;
+}
+
+/* ------------------------------------------------------------------ */
+/* general                                                            */
+/* ------------------------------------------------------------------ */
+
+.align_left
+{
+  text-align: left !important;
+}
+
+.align_center
+{
+  text-align: center !important;
+}
+
+.align_right
+{
+  text-align: right !important;
+}
+
+.my_pre
+{
+  white-space: pre !important;
+}
+
+.my_mono
+{
+  font-family: "Courier New" Courier monospace !important;
+}
+
+.my_bold
+{
+  font-weight: bold !important;
+}
+
+
+/* ------------------------------------------------------------------ */
+
+.page_header
+{
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  border-collapse: collapse;
+  border: none;
+  zborder: 1px solid #444;
+  padding: 0.0em 0.0em;
+  margin: 0.2em 0.0em;
+}
+
+.page_header th, .page_header td
+{
+  vertical-align: bottom;
+  border: none;
+  zborder: 1px solid #888;
+  padding: 0.4em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+/* ------------------------------------------------------------------ */
+
+.page_body
+{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: none;
+  zborder: 1px solid #444;
+  padding: 0.0em 0.0em;
+  margin: 0.2em 0.0em;
+  text-align: center;
+}
+
+.page_body th, .page_body td
+{
+  vertical-align: top;
+  border: none;
+  zborder: 1px solid #888;
+  padding: 0.0em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+/* ------------------------------------------------------------------ */
+
+.page_footer
+{
+  width: 100%;
+  font-size: 80%;
+  font-weight: normal;
+  line-height: 110%;
+  text-align: center;
+  border-collapse: collapse;
+  border: none;
+  zborder: 1px solid #444;
+  padding: 0.4em 0.0em;
+  margin: 0.2em 0.0em;
+}
+
+.page_footer th, .page_footer td
+{
+  vertical-align: top;
+  border: none;
+  zborder: 1px solid #888;
+  padding: 0.4em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+/* ------------------------------------------------------------------ */
+
+.tab_menu
+{
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  border-collapse: collapse;
+  border: none;
+  zborder: 1px solid #444;
+  padding: 0.0em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+.tab_menu th
+{
+  font-size: 110%;
+  font-weight: bold;
+  line-height: 110%;
+  vertical-align: top;
+  border: none;
+  zborder: 1px solid #888;
+  padding: 1.0em 0.0em 0.4em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+.tab_menu td
+{
+  vertical-align: top;
+  border: none;
+  zborder: 1px solid #888;
+  padding: 0.2em 0.75em;
+  margin: 0.0em 0.0em;
+}
+
+/* ------------------------------------------------------------------ */
+
+.ztab_preview
+{
+  table-layout: fixed;
+  text-align: left;
+  vertical-align: top;
+  border-collapse: seperate;
+  border: none;
+  zborder: 2px solid red;
+  padding: 0.0em 0.0em;
+  margin: 0.0em 0.0em;
+}
+
+td.tab_preview
+{
+  text-align: left;
+  vertical-align: top;
+  border: none;
+  zborder: 2px solid green;
+  padding: 0.0em!;
+  margin: 0.0em!;
+}
+
+/* ------------------------------------------------------------------ */
+
+.ecke_rot1
+{
+  color: red;
+}
+
+.ecke_rot2
+{
+  color: black;
+}
+
+.input_error
+{
+  color: red;
+}
+
+.achtung
+{
+  font-size: 200%;
+  font-weight: bold;
+  line-height: 110%;
+  color: red;
+}
+
+/* ------------------------------------------------------------------ */

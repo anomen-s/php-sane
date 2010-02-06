@@ -1,105 +1,216 @@
 <?PHP
-// CONFIG ------------------------------------------------------------------------------------
-$SCANIMAGE="/usr/bin/scanimage";   //  auch mit
-$PNMTOJPEG="/usr/bin/pnmtojpeg";   //  eigenen
-$OCR="/usr/bin/gocr";              //  Parametern
+// CONFIG --------------------------------------------------------------
+
+// system config
+// =============
+
+$SCANIMAGE  = "/usr/bin/scanimage";   //  auch mit
+$PNMTOJPEG  = "/usr/bin/pnmtojpeg";   //  eigenen
+$PNMTOTIFF  = "/usr/bin/pnmtotiff";   //  eigenen
+$OCR        = "/usr/bin/gocr";        //  Parametern
+
+
+// user config
+// ===========
+
+// default language
+// 0 = german
+// 1 = english
+
+$lang_id=1;
+
+
+// where to save all working files (scans...)
 
 //$SAVE_PLACE="/srv/www/htdocs/web/phpSANE/";
-$SAVE_PLACE="";                    //  mit slach als abschluss Wichtig bei mir local
-$TMP_PRAEFIX="tmp";                //  kein slach als abschluss und muss schreibrechte haben
+$SAVE_PLACE="./";
 
 
-$PREVIEW_WIDTH_MM=216;             //  das solten die apsoluten grösse sein die der scanner kann
-$PREVIEW_HEIGHT_MM=298;            //  entspricht hier DIN-A4
+// set your scanner maxiumum page size, and a low dpi for previews
 
-$PREVIEW_WIDTH_PX=340;             //  vom scanner übernommen bei 40dpi DIN-A4
-$PREVIEW_HEIGHT_PX=468;            //  es solten die werte übernommen werden die der scanner ausgibt
-$PREVIEW_DPI=100;                   //  tip ein bild scannen und grösse übernehmen und dpi
+$PREVIEW_WIDTH_MM   = 216;
+$PREVIEW_HEIGHT_MM  = 297;
+$PREVIEW_DPI        = 100;
 
-$browser_width=900;                //  Absolute Breite des Browser fenster
-$padding=15;                       //  Ränder
-// END CONFIG -----------------------------------------------------------------------------------
 
-if(`ls $OCR`) $ocr_test="yes";
-$TMP_PRAEFIX=$SAVE_PLACE."tmp";    //  don't edit
-$width_menue_window=$browser_width - (4 * $padding + $PREVIEW_WIDTH_PX);
-if(GetImageSize("bilder/logo.jpg")) {
-$logo_size=GetImageSize("bilder/logo.jpg");
-$logo_size_width=$logo_size[0];
-$logo_size_height=$logo_size[1];
-}
-                                   // x  1         2          3       4      5
-                                   //   |--|-----------------|--|-----------|--|  1
-$zelle_1_1_x=$padding;             //   |--|-----------------|--|-----------|--|
-$zelle_1_1_y=$padding;             //   |  |                                |  |  2   2_2 = 95x455 ist Logo
-$zelle_1_2_x=$width_menue_window;  //   |--------------------------------------|
-$zelle_1_3_x=$padding * 2;         //   |--|-----------------|--|-----------|--|  3
-$zelle_1_4_x=$PREVIEW_WIDTH_PX;    //   |  |                 |  |           |  |
-$zelle_1_5_x=$padding;             //   |  |                 |  |           |  |
-$zelle_3_1_y=$padding * 2;         //   |  |                 |  |           |  |  4    4_4 = 340x468
-$zelle_4_1_y=$PREVIEW_HEIGHT_PX;   //   |  |                 |  |           |  |
-$zelle_5_1_y=$padding;             //   |  |                 |  |           |  |   
-                                   //   |  |                 |  |           |  |
-                                   //   |--------------------------------------|  5
-                                   //   |--------------------------------------|  y
+// set the preview image on-screen size
 
-if($_GET['lang_id']) $lang_id=$_GET['lang_id']; else $lang_id=0;
-$action=$_GET['action'];
-$clear=0;
+$PREVIEW_WIDTH_PX   = $PREVIEW_WIDTH_MM * 2;
+$PREVIEW_HEIGHT_PX  = $PREVIEW_HEIGHT_MM * 2;
+$PREVIEW_BORDER_PX  = 4;
+
+
+// set the list of page sizes to select from
+
+$PAGE_SIZE_LIST = array();
+
+// ref: page sizes in mm (http://en.wikipedia.org/wiki/Paper_size)
+
+// NB. only pages within your scanner size will be included
+
+add_page_size('A0', 841, 1189);
+add_page_size('A1', 594, 841);
+add_page_size('A2', 420, 594);
+add_page_size('A3', 297, 420);
+add_page_size('A4', 210, 297);
+add_page_size('A5', 148, 210);
+add_page_size('A6', 105, 148);
+//add_page_size('A7', 74, 105);
+//add_page_size('A8', 52, 74);
+//add_page_size('A9', 37, 52);
+//add_page_size('A10', 26, 37);
+add_page_size('US Letter', 216, 279);
+add_page_size('US Legal', 216, 356);
+add_page_size('US Ledger', 432, 279);
+add_page_size('US Tabloid', 279, 432);
+
+
+// enable features
+
+$do_test_mode   = 0;
+
+$do_negative    = 0;
+$do_quality_cal = 0;
+$do_brightness  = 0;
+$do_usr_opt     = 1;
+
+$do_ocr = 0;
+if (`ls $OCR`) $do_ocr = 1;
+
+
+// END CONFIG ----------------------------------------------------------
+
+// first visit and clean/clear options
+
+$first=1;
+$clear=0; // jdw: does not do anything ?
 $clean=0;
+
+if (isset($_GET['first'])) $first=$_GET['first'];
+if ($first) { $clean=1; $clear=1; }
+$first=0;
+
+if(isset($_GET['lang_id'])) { $lang_id=$_GET['lang_id']; }
+
+$action="";
+if(isset($_GET['action'])) { $action=$_GET['action']; }
 if((ereg_replace("&#228;", "9", $lang[$lang_id][28])) == (ereg_replace("\xE4", "9", $action))) { $clean=1; $clear=1; }
 if((ereg_replace("&#252;", "9", $lang[$lang_id][25])) == (ereg_replace("\xFC", "9", $action))) $clear=1;
-if($_GET['sid']) if($clean == 1) $sid=time(); else $sid=$_GET['sid']; else $sid=time();  //time()
-$scanner=$_GET['scanner'];
-$scan_name=$_GET['scan_name'];
-if($_GET['geometry_l']) if($clear == 1) $geometry_l=0; else $geometry_l=$_GET['geometry_l']; else $geometry_l=0;
-if($_GET['geometry_t']) if($clear == 1) $geometry_t=0; else $geometry_t=$_GET['geometry_t']; else $geometry_t=0;
-if($_GET['geometry_x']) if($clear == 1) $geometry_x=0; else $geometry_x=$_GET['geometry_x']; else $geometry_x=0;
-if($_GET['geometry_y']) if($clear == 1) $geometry_y=0; else $geometry_y=$_GET['geometry_y']; else $geometry_y=0;
-$format_1="jpg";
-$format_2="pnm";
-$format_3="tif";
-if($_GET['format']) if($clear == 1) $format=$format_1; else $format=$_GET['format']; else $format=$format_1;
-if($_GET['mode']) if($clear == 1) $mode="24bit Color"; else $mode=$_GET['mode']; else $mode="Color";
-if($_GET['resolution']) if($clear == 1) $resolution=100; else $resolution=$_GET['resolution']; else $resolution=100;
-if($clear == 1) $negative="no"; else $negative=$_GET['negative'];
-if($clear == 1) $quality_cal= "yes"; else $quality_cal=$_GET['quality_cal'];
-if($clear == 1) $first="";
+
+
+// default options
+
+$sid=time();
+
+$preview_images="./bilder/scan.jpg";
+
+$geometry_l=0;
+$geometry_t=0;
+$geometry_x=0;
+$geometry_y=0;
+
+$format="jpg";
+$mode="Color";
+$resolution=100;
+
+$negative="no";
+$quality_cal= "no";
+$brightness="0";
+
+$usr_opt="";
+
+
+// user options
+
+if (!$clean)
+{
+  if (isset($_GET['sid'])) $sid=$_GET['sid'];
+
+  if (isset($_GET['preview_images'])) $preview_images=$_GET['preview_images'];
+
+  if (isset($_GET['geometry_l'])) $geometry_l=$_GET['geometry_l'];
+  if (isset($_GET['geometry_t'])) $geometry_t=$_GET['geometry_t'];
+  if (isset($_GET['geometry_x'])) $geometry_x=$_GET['geometry_x'];
+  if (isset($_GET['geometry_y'])) $geometry_y=$_GET['geometry_y'];
+
+  if (isset($_GET['format'])) $format=$_GET['format'];
+  if (isset($_GET['mode'])) $mode=$_GET['mode'];
+  if (isset($_GET['resolution'])) $resolution=$_GET['resolution'];
+
+  if (isset($_GET['negative'])) $negative="yes";
+  if (isset($_GET['quality_cal'])) $quality_cal="yes";
+  if (isset($_GET['brightness'])) $brightness=$_GET['brightness'];
+
+  if (isset($_GET['usr_opt'])) $usr_opt=$_GET['usr_opt'];
+}
+
+//if (isset($_GET['scanner'])) $scanner=$_GET['scanner'];
+//if (isset($_GET['scan_name'])) $scan_name=$_GET['scan_name'];
 //if($_GET['depth']) $depth=$_GET['depth']; else $depth="8";   // wers braucht
-//$brightness=$_GET['brightness'];    // die werden von meinem scanner leider nicht unterstützt
-//$contrast=$_GET['contrast'];
-//$gamma=$_GET['gamma'];
-$file=$TMP_PRAEFIX."/".$sid;
-if($_GET['preview_images']) if($clean == 1) $preview_images="bilder/scan.jpg"; else $preview_images=$_GET['preview_images']; else $preview_images="bilder/scan.jpg";
-if($action == $lang[$lang_id][24]) $preview_images=$TMP_PRAEFIX."/preview_".$sid.".jpg";
-if($action == $lang[$lang_id][27]) $file_scan=$file.".".$format;
-$cleaner="rm -f ".$TMP_PRAEFIX."/*";
 
-$m_zelle_1=$padding * 2;
-$m_zelle_2=round((($zelle_1_2_x - $m_zelle_1 - $padding) / 2));
 
-$center_logo=round((($browser_width - ($padding * 2)) / 2) - (70 + ($logo_size_width / 2)));
-$position_left=$zelle_1_1_x + $zelle_1_2_x + $zelle_1_3_x;
-$position_top=$zelle_1_1_y + $logo_size_height + $zelle_3_1_y;
-$position_width=$zelle_1_1_x + $zelle_1_2_x + $zelle_1_3_x + $zelle_1_4_x + $zelle_1_5_x;
-$line=$zelle_1_2_x + $zelle_1_3_x + $zelle_1_4_x;
-$facktor=round($PREVIEW_WIDTH_MM / $PREVIEW_WIDTH_PX,4);
+// verify usr_opt - keep only valid chars, otherwise replace with an 'X'
 
-// BEGIN don't edit
-$cmd=$SCANIMAGE." --list-devices | grep device";
-$sane_scanner = `$cmd`;
-//$sane_scanner="device `umax:/dev/sg0' is a UMAX     Astra 1220S      flatbed scanner";
-unset($cmd);
+$my_usr_opt = '';
+
+for ($i = 0; $i < strlen($usr_opt); $i++)
+{
+  if (preg_match('([0-9]|[a-z]|[A-Z]|[\ \%\+\-_=])', $usr_opt[$i]))
+  {
+    $my_usr_opt .= $usr_opt[$i];
+  }
+  else
+  {
+    $my_usr_opt .= 'X';
+  }
+}
+
+$usr_opt = $my_usr_opt;
+
+
+// INTERNAL CONFIG -----------------------------------------------------
+
+// file names setup
+
+$TMP_PRAEFIX=$SAVE_PLACE."tmp/";   //  kein slach als abschluss und muss schreibrechte haben
+
+$file_base=$TMP_PRAEFIX.$sid;
+
+$cleaner="rm -f ".$TMP_PRAEFIX."*";
+
+
+// scale factor to map preview image -> scanner co-ords
+
+$facktor = round($PREVIEW_WIDTH_MM / $PREVIEW_WIDTH_PX, 4);
+
+
+// scanner device detect
+
+if ($do_test_mode)
+{
+  $sane_scanner="device `umax:/dev/sg0' is a UMAX     Astra 1220S      flatbed scanner";
+}
+else
+{
+  $cmd=$SCANIMAGE." --list-devices | grep device";
+  $sane_scanner = `$cmd`;
+  unset($cmd);
+}
+
 $start=strpos($sane_scanner,"`")+1;
 $laenge=strpos($sane_scanner,"'")-$start;
-$scanner = "\"".substr($sane_scanner,$start,$laenge)."\"";//
+$scanner = "\"".substr($sane_scanner,$start,$laenge)."\"";
 unset($start);
 unset($laenge);
-// END don't edit
 
 $start=strpos($sane_scanner,"is a")+4;   // mit anderren scannern testen?
 $laenge=strpos($sane_scanner,"scanner")-$start;
 $scan_name = substr($sane_scanner,$start,$laenge);
 unset($start);
 unset($laenge);
+
+// ----
+
+$scan_ausgabe=$scan_name."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device = ".$scanner;
+
 ?>
