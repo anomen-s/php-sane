@@ -1,4 +1,4 @@
-   phpSANE   (Version 0.3.0)
+   phpSANE   (Version 0.3.1)
   ~~~~~~~~~
 
 phpSANE ist ein in PHP geschriebenes web-basierendes Frontend für SANE.
@@ -30,6 +30,8 @@ Automatische Installation:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Normalerweise sollte die automatische Installation funktionieren.
 Sie können diese durchführen, indem Sie als root das Scipt ./install.sh aufrufen.
+Sollte die automatische Installtion nicht funktionieren, führen Sie bitte die
+manuelle Installtion durch.
 
 Manuelle Installation:
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -46,12 +48,20 @@ Manuelle Installation:
     z.B.: "chmod 0600 .htaccess; chmod 0700 tmp"
  5) Jetzt müssen Sie ein paar Änderungen in der config.php vornehmen.
     z.B.: "vi config.php"
- 6) Ändern Sie $SANE_FIND_SCANNER in `which sane-find-scanner`.
- 7) Ändern Sie $SCANIMAGE in `which scanimage`.
- 8) Ändern Sie $PNMTOTIFF in `which pnmtotiff`.
- 9) Ändern Sie $PNMTOJPEG in `which pnmtojpeg`.
-10) Ändern Sie $GOCR in `which gocr`.
-11) Ändern Sie $PHPSANE_ROOT in `which pwd`.
-12) phpSANE ist konfiguriert, dass nur Benutzer, die im Subnet
+ 6) Normalerweise können Sie die Punkte 7 bis 11 überspringen, außer Sie haben
+    die Programme wie scanimage nicht nach /usr/bin installiert.
+ 7) Ändern Sie $SANE_FIND_SCANNER in `which sane-find-scanner`.
+ 8) Ändern Sie $SCANIMAGE in `which scanimage`.
+ 9) Ändern Sie $PNMTOTIFF in `which pnmtotiff`.
+10) Ändern Sie $PNMTOJPEG in `which pnmtojpeg`.
+11) Ändern Sie $GOCR in `which gocr`.
+12) Ändern Sie $PHPSANE_ROOT in `which pwd`.
+13) phpSANE ist konfiguriert, dass nur Benutzer, die im Subnet
     192.168.0.0/255.255.255.0 und in der Gruppe phpSANE sind, Zugriff auf phpSANE
     haben. Um dies zu ändern, müssen Sie die Datei .htaccess editieren.
+
+FAQ:
+^^^^
+F: phpSANE sagt, dass keine Scanner gefunden wurden.
+A: Stellen Sie sicher, dass Ihr Apache-Benutzer mit scanimage scannen kann.
+   Ihr Apache-Benutzer muss auch Schreibrechte für Ihr Scanner-Device haben.

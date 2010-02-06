@@ -7,8 +7,8 @@ $PNMTOJPEG="/usr/bin/pnmtojpeg";
 $GOCR="/usr/bin/gocr";
 $SCAN_SPEED="Fastest";
 
-$PHPSANE_ROOT="/var/www/html/users/bilder/phpSANE";
-$TMP_PRAEFIX="/tmp/phpsane";
+$PHPSANE_ROOT="/var/www/html/phpSANE";
+$TMP_PRAEFIX="/tmp";
 
 $PREVIEW_WIDTH_MM=210;
 $PREVIEW_HEIGHT_MM=300;
@@ -30,6 +30,11 @@ $default_scanner = substr($sane_scanner,$start,$laenge);
 unset($start);
 unset($laenge);
 // END don't edit
+
+// If you want to specify your scanner manually,
+// uncomment the following line (remove the hash)
+// and modify it.
+# $default_scanner = "hp:/dev/sg1";
 
 $SCANNER = array("Scanner" => "$default_scanner");
 ?>

@@ -58,5 +58,21 @@ chmod 0600 .htaccess
 chmod 0700 tmp
 echo OK
 
-echo "Now you must edit the config.php and the .htaccess."
+echo -n "Setting paths ... "
+echo -e ",s/\/usr\/bin\/sane-find-scanner/$(echo $sane_find_scanner | sed -e 's/\//\\\//g')/g\nwq" | ed config.php 2>/dev/null
+echo -e ",s/\/usr\/bin\/scanimage/$(echo $scanimage | sed -e 's/\//\\\//g')/g\nwq" | ed config.php 2>/dev/null
+echo -e ",s/\/usr\/bin\/pnmtotiff/$(echo $pnmtotiff | sed -e 's/\//\\\//g')/g\nwq" | ed config.php 2>/dev/null
+echo -e ",s/\/usr\/bin\/pnmtojpeg/$(echo $pnmtojpeg | sed -e 's/\//\\\//g')/g\nwq" | ed config.php 2>/dev/null
+echo -e ",s/\/usr\/bin\/gocr/$(echo $gocr | sed -e 's/\//\\\//g')/g\nwq" | ed config.php 2>/dev/null
+echo -e ",s/\/var\/www\/html\/phpSANE/$(pwd)/g\nwq" | ed config.php 2>/dev/null
+echo OK
+
+STD="192.168.0.0/255.255.255.0"
+echo -n "Which computers should have access to phpSANE [$STD] : "
+read phpsane_allow
+if [ "$phpsane_allow" != $STD ] ; then
+echo -e ",s/192\.168\.0\.0\/255\.255\.255\.0/$(echo $phpsane_allow | sed -e 's/\//\\\//' | sed -e 's/\./\\\./g' )/g\nwq" | ed .htaccess 2>/dev/null
+fi
+
+echo "Installation finished. Now phpSANE _should_ work."
 echo "For more details read the README."

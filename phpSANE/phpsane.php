@@ -20,6 +20,8 @@ else {
 $start_url="phpsane.php?lang=".$lang."&aktion=start";
 if($lang=="en") echo "<font size=\"+1\">Turn on your scanner and <a href=\"$start_url\">continue</a>.</font><br>\n";
 if($lang=="de") echo "<font size=\"+1\">Schalten Sie Ihren Scanner an. Dann k&ouml;nnen Sie den Vorgang <a href=\"$start_url\">fortsetzen</a>.</font><br>\n";
+if($lang=="en") echo "Please click only <u>once</u> on every button/link and do not use your browser's stop-icon!<br>\n";
+if($lang=="de") echo "Bitte klicken Sie nur <u>einmal</u> auf jeden Knopf/Link und klicken Sie auf keinen Fall auf den Stopp-Knopf Ihres Browser!<br>\n";
 }
 
 ?>
