@@ -34,18 +34,18 @@ if [ `locate libphp4.so` ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 STD=`locate -e /etc/*/httpd.conf|head -n1`
 echo -n "Location of your httpd.conf [$STD] : "
 read httpd_conf
-if [ ! $httpd_conf ] ; then httpd_conf=$STD ; fi
+[ ! $httpd_conf ] && httpd_conf=$STD
 
 STD=`grep -i '^User' ${httpd_conf}|cut -d' ' -f2`:`grep -i '^Group' ${httpd_conf}|cut -d' ' -f2`
 echo -n "User under which your apache runs [$STD] : "
 read httpd_own
-if [ ! $httpd_own ] ; then httpd_own=$STD ; fi
+[ ! $httpd_own ] && httpd_own=$STD
 
 STD=`grep -i '^DocumentRoot' ${httpd_conf}|cut -d' ' -f2`/phpSANE
 echo -n "Location of phpSANE [$STD] : "
 read target_dir
-if [ ! $target_dir ] ; then target_dir=$STD ; fi
-rm -fr $target_dir
+[ ! $target_dir ] && target_dir=$STD
+[ -d $target_dir ] && [ -f $target_dir/phpsane.php ] && rm -fr $target_dir
 
 echo -n "Copying phpSANE ... "
 cp -a phpSANE $target_dir

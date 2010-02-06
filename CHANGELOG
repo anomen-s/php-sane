@@ -2,8 +2,8 @@
   ~~~~~~~~~~~
 
 * 0.1.1
-	- phpSANE verifies that a scanner is connected and does not print strange
-	  errors.
+	- phpSANE verifies that a scanner is connected and does not print
+	  strange errors.
 	- phpSANE is available in English and German.
 	- Automatic installation with a bash-script.
 
@@ -16,3 +16,7 @@
 * 0.3.1
 	- You can specify your scanner manually (if phpSANE does not detect it).
 	- The automatic installation _should_ do all necessary things now.
+
+* 0.3.2
+	- Fixed bug #1086548
+
