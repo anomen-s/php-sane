@@ -6,6 +6,8 @@ echo "<input type=hidden name=\"aktion\" value=\"scan\">\n";
 echo "<input type=hidden name=\"sid\" value=\"$sid\">\n";
 echo "<input type=hidden name=\"scanner\" value=\"$scanner\">\n";
 echo "<table>\n";
+echo "<tr><td valign=top>\n";
+echo "<table>\n";
 echo "<tr><td>\n";
 if($lang=="en") echo "<b>X-Offset:</b>\n";
 if($lang=="de") echo "<b>Links:</b>\n";
@@ -57,5 +59,60 @@ if($lang=="de") echo "<input type=reset value=\"Zur&uuml;cksetzen\"><br><input t
 echo "</td></tr>\n";
 echo "</table>\n";
 echo "</form>\n";
-
+echo "</td><td width=100>&nbsp;\n";
+echo "</td><td valign=top>\n";
+if($preview==1) {
+echo "<form name=\"previewImage\" action=\"#\">\n";
+$file_pnm=$TMP_PRAEFIX."_".$sid."_preview.pnm";
+$file_jpg=$PHPSANE_ROOT."/tmp/".$sid."_preview.jpg";
+$file_url="tmp/".$sid."_preview.jpg";
+$cmd_scan = $SCANIMAGE." -d ".$scanner." --mode Gray --resolution 15dpi --speed Fastest --preview=yes --fast-preview=yes -l 0mm -t 0mm -x ".$PREVIEW_WIDTH_MM."mm -y ".$PREVIEW_HEIGHT_MM."mm >".$file_pnm;
+$cmd_pnmtojpeg = $PNMTOJPEG." --quality=50 --greyscale ".$file_pnm." >".$file_jpg;
+$cmd_clean = "rm -f ".$file_pnm;
+$scan=`$cmd_scan`;
+$pnmtojpeg=`$cmd_pnmtojpeg`;
+$clean=`$cmd_clean`;
+echo "<input type=radio name=\"ecke\" value=\"lo\" checked>&nbsp;";
+if($lang=="en") echo "Top-Left<br>\n";
+if($lang=="de") echo "Oben-Links<br>\n";
+echo "<input type=radio name=\"ecke\" value=\"ru\">&nbsp;";
+if($lang=="en") echo "Bottom-Right<br>\n";
+if($lang=="de") echo "Unten-Rechts<br>\n";
+echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
+echo "<!--\n";
+echo "function setPreview(x,y) {\n";
+echo "if(document.previewImage.ecke[1].checked) {\n";
+echo "var newL = document.previewForm.geometry_l.value;\n";
+echo "var newT = document.previewForm.geometry_t.value;\n";
+echo "var newX = x - newL;\n";
+echo "var newY = y - newT;\n";
+echo "setGeometry(newL,newT,newX,newY);\n";
+echo "document.previewImage.ecke[0].checked = true;\n";
+echo "}\n";
+echo "else {\n";
+echo "var newL = x;\n";
+echo "var newT = y;\n";
+echo "var newX = document.previewForm.geometry_x.value;\n";
+echo "var newY = document.previewForm.geometry_y.value;\n";
+echo "setGeometry(newL,newT,newX,newY);\n";
+echo "document.previewImage.ecke[1].checked = true;\n";
+echo "}\n";
+echo "}\n";
+echo "//-->\n";
+echo "</script>\n";
+echo "<map name=\"Preview\">\n";
+for($y=1;$y<=$PREVIEW_HEIGHT_PX;$y++) {
+for($x=1;$x<=$PREVIEW_WIDTH_PX;$x++) {
+$xMM = round($x*($PREVIEW_WIDTH_MM/$PREVIEW_WIDTH_PX));
+$yMM = round($y*($PREVIEW_WIDTH_MM/$PREVIEW_WIDTH_PX));
+echo "<area shape=rect coords=\"".$x.",".$y.",".$x.",".$y."\" href=\"javascript:setPreview(".$xMM.",".$yMM.")\">\n";
+}
+}
+echo "</map>\n";
+echo "<br>\n";
+echo "<img src=\"".$file_url."\" alt=\"Preview\" width=".$PREVIEW_WIDTH_PX." height=".$PREVIEW_HEIGHT_PX." border=0 usemap=\"#Preview\">\n";
+echo "</form>\n";
+}
+echo "</td></tr>\n";
+echo "</table>\n";
 ?>

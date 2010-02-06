@@ -23,10 +23,11 @@ echo "</td><td>\n";
 echo "<select name=\"scanner\" size=1>\n";
 while(list($name,$device) = each($SCANNER)) echo "<option value=\"$device\">$name\n";
 echo "</select>\n";
-/* echo "</td></tr><tr><td>\n";
-echo "<b>Vorschau:</b>\n";
+echo "</td></tr><tr><td>\n";
+if($lang=="en") echo "<b>Preview:</b>\n";
+if($lang=="de") echo "<b>Vorschau:</b>\n";
 echo "</td><td>\n";
-echo "<input type=checkbox name=\"preview\" value=\"1\">\n"; */
+echo "<input type=checkbox name=\"preview\" value=\"1\">\n";
 echo "</td></tr><tr><td colspan=2>\n";
 echo "<div align=center><input type=submit value=\"Start\"></div>\n";
 echo "</tr><td>\n";

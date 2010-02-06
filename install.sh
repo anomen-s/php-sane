@@ -20,6 +20,10 @@ echo -n "Checking for pnmtotiff ... "
 pnmtotiff=`which pnmtotiff`
 if [ $pnmtotiff ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 
+echo -n "Checking for pnmtojpeg ... "
+pnmtojpeg=`which pnmtojpeg`
+if [ $pnmtojpeg ] ; then echo OK ; else echo Failed&&exit -1 ; fi
+
 echo -n "Checking for apache php-module \"libphp4.so\" ... "
 if [ `locate libphp4.so` ] ; then echo OK ; else echo Failed&&exit -1 ; fi
 

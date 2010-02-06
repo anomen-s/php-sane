@@ -6,3 +6,6 @@
 	  errors.
 	- phpSANE is available in English and German.
 	- Automatic installation with a bash-script.
+
+* 0.2.0
+	- phpSANE supports preview now.

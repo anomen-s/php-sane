@@ -1,7 +1,7 @@
 <?PHP
 
-$file_tmp=$TMP_PRAEFIX."_".$sid."*";
-$file_phpsane=$PHPSANE_ROOT."/tmp/".$sid."*";
+$file_tmp=$TMP_PRAEFIX."_*";
+$file_phpsane=$PHPSANE_ROOT."/tmp/*";
 
 $cmd_clean = "rm -f $file_tmp $file_phpsane";
 $clean=`$cmd_clean`;
