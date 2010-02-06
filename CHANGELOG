@@ -1,32 +1,5 @@
    Changelog
   ~~~~~~~~~~~
 
-* 0.1.1
-	- phpSANE verifies that a scanner is connected and does not print
-	  strange errors.
-	- phpSANE is available in English and German.
-	- Automatic installation with a bash-script.
-
-* 0.2.0
-	- phpSANE supports preview now.
-
-* 0.3.0
-	- phpSANE supports OCR now (requires gocr).
-
-* 0.3.1
-	- You can specify your scanner manually (if phpSANE does not detect it).
-	- The automatic installation _should_ do all necessary things now.
-
-* 0.3.2
-	- Fixed bug #1086548
-
-* 0.3.3
-	- Some feature enhancements by Stefan Bernshausen <stefan@bernshausen.org>
-
-* 0.4.0
-	- Fixed bug #1104508
-	- Supports feature #1104513
-	- Code cleaned up.
-
-* 0.4.1
-	- phpSANE now works without register_global
+* 0.3.4
+	- some improvements by Jack Bourne added, thanks

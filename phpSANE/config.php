@@ -14,7 +14,7 @@ $PREVIEW_HEIGHT_MM=298;            //  entspricht hier DIN-A4
 
 $PREVIEW_WIDTH_PX=340;             //  vom scanner übernommen bei 40dpi DIN-A4
 $PREVIEW_HEIGHT_PX=468;            //  es solten die werte übernommen werden die der scanner ausgibt
-$PREVIEW_DPI=40;                   //  tip ein bild scannen und grösse übernehmen und dpi
+$PREVIEW_DPI=100;                   //  tip ein bild scannen und grösse übernehmen und dpi
 
 $browser_width=900;                //  Absolute Breite des Browser fenster
 $padding=15;                       //  Ränder
@@ -60,7 +60,7 @@ $format_1="jpg";
 $format_2="pnm";
 $format_3="tif";
 if($_GET['format']) if($clear == 1) $format=$format_1; else $format=$_GET['format']; else $format=$format_1;
-if($_GET['mode']) if($clear == 1) $mode="Color"; else $mode=$_GET['mode']; else $mode="Color";
+if($_GET['mode']) if($clear == 1) $mode="24bit Color"; else $mode=$_GET['mode']; else $mode="Color";
 if($_GET['resolution']) if($clear == 1) $resolution=100; else $resolution=$_GET['resolution']; else $resolution=100;
 if($clear == 1) $negative="no"; else $negative=$_GET['negative'];
 if($clear == 1) $quality_cal= "yes"; else $quality_cal=$_GET['quality_cal'];
@@ -92,13 +92,13 @@ $sane_scanner = `$cmd`;
 unset($cmd);
 $start=strpos($sane_scanner,"`")+1;
 $laenge=strpos($sane_scanner,"'")-$start;
-$scanner = substr($sane_scanner,$start,$laenge);//
+$scanner = "\"".substr($sane_scanner,$start,$laenge)."\"";//
 unset($start);
 unset($laenge);
 // END don't edit
 
 $start=strpos($sane_scanner,"is a")+4;   // mit anderren scannern testen?
-$laenge=strpos($sane_scanner,"flatbed")-$start;
+$laenge=strpos($sane_scanner,"scanner")-$start;
 $scan_name = substr($sane_scanner,$start,$laenge);
 unset($start);
 unset($laenge);

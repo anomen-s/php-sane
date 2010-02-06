@@ -46,18 +46,18 @@ $lang[1] = array("Selection",             // 0
 		 "mouse Position X",     // 7
 		 "mouse Position Y",     // 8
 		 "Parameter",           // 9
-		 "Datei Format",        // 10
+		 "File Format",        // 10
 		 "JPG",                 // 11
 		 "PNM",                 // 12
 		 "TIFF",                // 13
 		 "Mode",                // 14
-		 "Farbe",                 // 15
-		 "Grau",                // 16
-		 "S/W",               // 17
+		 "24bit Color",                 // 15
+		 "True Gray",                // 16
+		 "Black & White",               // 17
 		 "Resolution DPI",  // 18
 		 "Color",           // 19
-		 "Negativ",             // 20
-		 "White calibration",  // 21
+		 "Negative",             // 20
+		 "White Calibration",  // 21
 		 "Brightness",           // 22
 		 "Contrast",            // 23
 		 "Preview",            // 24
@@ -65,12 +65,12 @@ $lang[1] = array("Selection",             // 0
 		 "OCR",                 // 26
 		 "Scan",             // 27
 		 "Clean",      // 28
-		 "Preview Scan<br><br>No Selection<br>No Datei Format<br>No Resolution DPI",     // 29
+		 "Preview Scan<br><br>No Selection<br>No File Format<br>No Resolution DPI",     // 29
 		 "Max value Scan<br><br>DIN-A4<br>Resolution DPI = 5 - 600",      // 30
 		 "Scanner Device",      // 31
 		 "ERROR",      // 32
 		 "No scanners were identified.<br>If you were expecting something different, check that the scanner is plugged in, turned on and detected by the sane-find-scanner tool (if appropriate).<br>Please read the documentation which came with this software (README, FAQ, manpages).",      // 33
 		 "BACK",                // 34
-		 "Zum Speichern Rechter Mausklick",                // 35
+		 "Right-Click to save",                // 35
 		 "CLOSE");                // 36
 ?>

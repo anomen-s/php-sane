@@ -1,10 +1,10 @@
-   phpSANE   (Version 0.3.3)
+   phpSANE   (Version 0.3.4)
   ~~~~~~~~~
 
 phpSANE is a web-based frontend for SANE written in PHP.
 Now you can scan with your web-browser, too.
 
-Copyright (C) 2005  David Fröhlich <dfroe@gmx.de>
+Copyright (C) 2007  David Froehlich <dfroe@gmx.de>
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -29,8 +29,6 @@ Requirements:
 Installation:
 ^^^^^^^^^^^^^
 Just copy the phpSANE-directory into your www-root.
-Make sure that the directory "phpSANE/tmp" is writable by your
-apache-user.
 Then you can scan by opening phpsane.php in your web-browser.
 
 FAQ:

@@ -1,19 +1,18 @@
-   phpSANE   (Version 0.3.3)
+   phpSANE   (Version 0.3.4)
   ~~~~~~~~~
 
-phpSANE ist ein in PHP geschriebenes web-basierendes Frontend für SANE.
-Jetzt können Sie auch mit Ihrem Web-Browser scannen.
+phpSANE ist ein in PHP geschriebenes web-basierendes Frontend fÃ¼r SANE.
+Jetzt kÃ¶nnen Sie auch mit Ihrem Web-Browser scannen.
 
-Copyright (C) 2005	David Fröhlich <dfroe@gmx.de>
-			Stefan Bernshausen <stefan@bernshausen.org>
+Copyright (C) 2007  David FrÃ¶hlich <dfroe@gmx.de>
 
-Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU
-General Public License, wie von der Free Software Foundation veröffentlicht,
-weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder
-(nach Ihrer Option) jeder späteren Version.
-Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von
+Dieses Programm ist freie Software. Sie kÃ¶nnen es unter den Bedingungen der GNU
+General Public License, wie von der Free Software Foundation verÃ¶ffentlicht,
+weitergeben und/oder modifizieren, entweder gemÃ¤ÃŸ Version 2 der Lizenz oder
+(nach Ihrer Option) jeder spÃ¤teren Version.
+Die VerÃ¶ffentlichung dieses Programms erfolgt in der Hoffnung, daÃŸ es Ihnen von
 Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite
-Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK.
+Garantie der MARKTREIFE oder der VERWENDBARKEIT FÃœR EINEN BESTIMMTEN ZWECK.
 Details finden Sie in der GNU General Public License.
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
 Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software
@@ -24,20 +23,18 @@ Voraussetzungen:
 ^^^^^^^^^^^^^
 * SANE
 * netpbm
-* Apache web-server mit PHP-Unterstützung
+* Apache web-server mit PHP-UnterstÃ¼tzung
 * gocr (optional)
 
 Installation:
 ^^^^^^^^^^^^^
 Kopieren Sie einfach das phpSANE-Verzeichnis in Ihr www-root Verzeichnis.
-Stellen Sie sicher, dass das Verzeichnis "phpSANE/tmp" für Ihren www-user
-schreibbar ist.
-Dann können Sie durch öffnen der phpsane.php in Ihrem Web-Browser scannen.
+Dann kÃ¶nnen Sie durch Ã–ffnen der phpsane.php in Ihrem Web-Browser scannen.
 
 FAQ:
 ^^^^
 F: phpSANE sagt, dass keine Scanner gefunden wurden.
 A: Stellen Sie sicher, dass Ihr Apache-Benutzer mit scanimage scannen kann.
-   Ihr Apache-Benutzer muss auch Schreibrechte für Ihr Scanner-Device haben.
-   Eine andere Möglichkeit dieses Problem zu lösen, ist scanimage +suid-root
+   Ihr Apache-Benutzer muss auch Schreibrechte fÃ¼r Ihr Scanner-Device haben.
+   Eine andere MÃ¶glichkeit dieses Problem zu lÃ¶sen, ist scanimage +suid-root
    zu installieren.

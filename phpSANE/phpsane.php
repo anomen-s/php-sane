@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-<meta name="author" content="David Fr&ouml;hlich,Stefan Bernshausen">
+<meta name="author" content="root">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>phpSANE</title>
@@ -41,7 +41,7 @@ echo "    </tr>\n";
 echo "    <tr>\n";
 echo "      <td>&nbsp;</td>\n";
 echo "      <td colspan=\"3\" align=\"left\" valign=\"middle\">\n";
-echo "<input type=\"image\" name=\"lang_id\" value=\"0\" src=\"bilder/de.gif\"><IMG src=\"bilder/clear.gif\" width=\"10\" height=\"1\" border=\"0\"><input type=\"image\" name=\"lang_id\" value=\"1\" src=\"bilder/en.gif\"><IMG src=\"bilder/clear.gif\" width=\"".$center_logo."\" height=\"1\" border=\"0\"><img src=\"bilder/logo.jpg\" height=\"".$logo_size_height."\" width=\"".$logo_size_width."\" alt=\"phpSANE\" border=\"0\"><br></td>\n";
+echo "<input type=\"image\" name=\"lang_id\" value=\"1\" src=\"bilder/de.gif\"><IMG src=\"bilder/clear.gif\" width=\"10\" height=\"1\" border=\"0\"><input type=\"image\" name=\"lang_id\" value=\"0\" src=\"bilder/en.gif\"><IMG src=\"bilder/clear.gif\" width=\"".$center_logo."\" height=\"1\" border=\"0\"><img src=\"bilder/logo.jpg\" height=\"".$logo_size_height."\" width=\"".$logo_size_width."\" alt=\"phpSANE\" border=\"0\"><br></td>\n";
 echo "      <td>&nbsp;</td>\n";
 echo "    </tr>\n";
 echo "    <tr>\n";
@@ -55,7 +55,7 @@ echo "    <tr>\n";
 echo "      <td><IMG src=\"bilder/clear.gif\" width=\"1\" height=\"".$zelle_4_1_y."\" align=\"left\" border=\"0\"><br></td>\n";
 echo "      <td class=\"text\" align=\"left\" valign=\"top\">\n";
 if($scanner) include("menu.php"); else {
-echo "<FORM name=\"menueForm\" action=\"phpsane.php?lang_id=".$lang_id."sid=".$sid."geometry_l=".$geometry_l."geometry_t=".$geometry_t."geometry_x=".$geometry_x."geometry_y=".$geometry_y."format=".$format."mode=".$mode."resolution=".$resolution."negative=".$negative."quality_cal=".$quality_cal."first=".$first."\" method=\"GET\">\n";
+echo "<FORM name=\"menueForm\" action=\"phpsane.php?lang_id=".$lang_id."sid=".$sid."geometry_l=".$geometry_l."geometry_t=".$geometry_t."geometry_x=".$geometry_x."geometry_y=".$geometry_y."format=".$format."mode=".$mode." resolution=".$resolution."negative=".$negative."quality_cal=".$quality_cal."first=".$first."\" method=\"GET\">\n";
 echo "<input type=hidden name=\"sid\" value=\"".$sid."\">\n";
 echo "<input type=hidden name=\"geometry_l\" value=\"".$geometry_l."\">\n";
 echo "<input type=hidden name=\"geometry_t\" value=\"".$geometry_t."\">\n";

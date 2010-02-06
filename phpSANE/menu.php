@@ -1,4 +1,5 @@
 <?PHP
+include("html_selectbox.php");
 //echo "<FORM name=\"menueForm\" action=\"phpsane.php\" method=\"GET\">\n";
 echo "<table cellspacing=\"0\" border=\"0\" cellpadding=\"0\" align=\"left\">\n";
 echo "<tr>\n";
@@ -40,7 +41,7 @@ echo "<td>&nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td>&nbsp;</td>\n";
-echo "<td align=\"right\" class=\"text_padd\"><INPUT type=\"button\" value=\"DIN-A4\" onclick=\"setGeometry('0','0','215','297')\" class=\"text_input\"></td>\n";
+echo "<td align=\"right\" class=\"text_padd\"><INPUT type=\"button\" value=\"Letter\" onclick=\"setGeometry('0','0','216','279')\" class=\"text_input\"></td>\n";
 echo "<td>&nbsp;</td>\n";
 echo "<td>&nbsp;</td>\n";
 echo "</tr>\n";
@@ -61,7 +62,7 @@ echo "<option value=\"pnm\" $selected_2>".$lang[$lang_id][12]."\n";
 echo "<option value=\"tif\" $selected_3>".$lang[$lang_id][13]."\n";
 echo "</SELECT></td>\n";
 if($negative=="yes") $checked="checked";
-echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][20]."&nbsp;<INPUT type=\"checkbox\" name=\"negative\" value=\"yes\" ".$checked."></td>\n";
+//echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][20]."&nbsp;<INPUT type=\"checkbox\" name=\"negative\" value=\"yes\" ".$checked."></td>\n";
 echo "<td>&nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
@@ -70,19 +71,37 @@ echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][14]."&nbsp;<SELE
 if($mode=="Color") $selected_1="selected"; else $selected_1="";
 if($mode=="Gray") $selected_2="selected"; else $selected_2="";
 if($mode=="Lineart") $selected_3="selected"; else $selected_3="";
-echo "<option value=\"Color\" $selected_1>".$lang[$lang_id][15]."\n";
-echo "<option value=\"Gray\" $selected_2>".$lang[$lang_id][16]."\n";
-echo "<option value=\"Lineart\" $selected_3>".$lang[$lang_id][17]."\n";
+echo "<option value=\"24bit Color\" $selected_1>".$lang[$lang_id][15]."\n";
+echo "<option value=\"True\" $selected_2>".$lang[$lang_id][16]."\n";
+echo "<option value=\"Black\" $selected_3>".$lang[$lang_id][17]."\n";
 echo "</SELECT></td>\n";
 if(!$_GET['first']) { $first=1; $checked1="checked"; }
 if($quality_cal=="yes") { $checked1="checked"; $first=1; } else { $checked=""; $first=1; }
 echo "<input type=hidden name=\"first\" value=\"$first\">\n";
-echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][21]."&nbsp;<INPUT type=\"checkbox\" name=\"quality_cal\" value=\"yes\" ".$checked1."></td>\n";
+//echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][21]."&nbsp;<INPUT type=\"checkbox\" name=\"quality_cal\" value=\"yes\" ".$checked1."></td>\n";
 echo "<td>&nbsp;</td>\n";
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td>&nbsp;</td>\n";
-echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][18]."&nbsp;<INPUT type=\"text\" name=\"resolution\" value=\"".$resolution."\" size=\"4\" maxlength=\"4\" class=\"text_input\"></td>\n";
+
+/////////////////////////////////////////////////////////////////////////////
+echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][18]."&nbsp;";
+// retrieve possible resolutions
+$res_list = `/usr/bin/scanimage --help | grep -m 1 resolution`;
+$start=strpos($res_list,"n")+2;
+$length = strpos($res_list,"dpi") -$start;
+$list = "".substr($res_list,$start,$length)."";
+unset($start);
+unset($length);
+// change "|" separated string $list into array $resolution values. 
+$resolution = explode("|",$list);
+//generate html selectbox and store in string $res_box
+$res_box = html_selectbox(resolution,$resolution,$resolution);
+//display the select box
+echo "$res_box";
+
+//////////////////////////////////////////////////////////////////////////////
+
 //echo "<td align=\"right\" class=\"text_padd\">".$lang[$lang_id][22]."&nbsp;<INPUT type=\"text\" value=\"".$brightness."\" name=\"brightness\" size=\"4\" maxlength=\"4\" class=\"text_input\"></td>\n";
 echo "<td>&nbsp;</td>\n";
 echo "<td>&nbsp;</td>\n";
@@ -123,7 +142,8 @@ echo "<td colspan=\"4\" height=\"".$padding."\"><IMG src=\"bilder/black.gif\" wi
 echo "</tr>\n";
 echo "<tr>\n";
 echo "<td class=\"text_achtung\" align=\"center\" valign=\"middle\">!</td>\n";
-echo "<td class=\"text_klein\" align=\"left\" valign=\"top\">".$lang[$lang_id][29]."</td>\n";
+//echo "<td class=\"text_klein\" align=\"left\" valign=\"top\">".$lang[$lang_id][29]."</td>\n";
+echo "<td class=\"text_klein\" align=\"left\" valign=\"top\">".$cmd_scan."</td>\n";
 echo "<td colspan=\"2\" class=\"text_klein\" align=\"left\" valign=\"top\">".$lang[$lang_id][30]."</td>\n";
 echo "</tr>\n";
 echo "</table>\n";
