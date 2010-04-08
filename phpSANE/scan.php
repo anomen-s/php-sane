@@ -61,7 +61,7 @@ $cmd_mode=" --mode=\"".$mode."\"";
 //$cmd_depth=" --depth ".$depth;
 
 $cmd_resolution="";
-if ($resolution >= 5 && $resolution <= 9600)
+if (($resolution >= $resolution_min) && ($resolution <= $resolution_max))
 {
   $cmd_resolution=" --resolution ".$resolution."dpi";
 }

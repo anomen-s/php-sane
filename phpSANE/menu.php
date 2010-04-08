@@ -142,15 +142,6 @@ echo "</tr>\n";
 
 echo "<tr>\n";
 echo "<td align=\"right\">".$lang[$lang_id][18]."&nbsp;";
-// retrieve possible resolutions
-$res_list = `/usr/bin/scanimage --help | grep -m 1 resolution`;
-$start=strpos($res_list,"n")+2;
-$length = strpos($res_list,"dpi") -$start;
-$list = "".substr($res_list,$start,$length)."";
-unset($start);
-unset($length);
-// change "|" separated string $list into array $resolution values.
-$resolution_list = explode("|",$list);
 //generate html selectbox and store in string $res_box
 $res_box = html_selectbox('resolution',$resolution_list,$resolution);
 //display the select box

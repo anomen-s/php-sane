@@ -4,10 +4,11 @@
 // system config
 // =============
 
-$SCANIMAGE  = "/usr/bin/scanimage";   //  auch mit
-$PNMTOJPEG  = "/usr/bin/pnmtojpeg";   //  eigenen
-$PNMTOTIFF  = "/usr/bin/pnmtotiff";   //  eigenen
-$OCR        = "/usr/bin/gocr";        //  Parametern
+$SCAN_HOME  = "/usr/bin/";
+$SCANIMAGE  = $SCAN_HOME . "scanimage";   //  auch mit
+$PNMTOJPEG  = $SCAN_HOME . "pnmtojpeg";   //  eigenen
+$PNMTOTIFF  = $SCAN_HOME . "pnmtotiff";   //  eigenen
+$OCR        = $SCAN_HOME . "gocr";        //  Parametern
 
 
 // user config
@@ -17,13 +18,13 @@ $OCR        = "/usr/bin/gocr";        //  Parametern
 // 0 = german
 // 1 = english
 
-$lang_id=1;
+$lang_id = 1;
 
 
 // where to save all working files (scans...)
 
 //$SAVE_PLACE="/srv/www/htdocs/web/phpSANE/";
-$SAVE_PLACE="./";
+$SAVE_PLACE = "./";
 
 
 // set your scanner maxiumum page size, and a low dpi for previews
@@ -186,31 +187,111 @@ $facktor = round($PREVIEW_WIDTH_MM / $PREVIEW_WIDTH_PX, 4);
 
 // scanner device detect
 
+$scanner_ok = false;
+
 if ($do_test_mode)
 {
-  $sane_scanner="device `umax:/dev/sg0' is a UMAX     Astra 1220S      flatbed scanner";
+  $sane_result = "device `umax:/dev/sg0' is a UMAX     Astra 1220S      flatbed scanner";
 }
 else
 {
-  $cmd=$SCANIMAGE." --list-devices | grep device";
-  $sane_scanner = `$cmd`;
-  unset($cmd);
+  $sane_cmd = $SCANIMAGE . " --list-devices | grep device";
+  $sane_result = `$sane_cmd`;
+  unset($sane_cmd);
 }
 
-$start=strpos($sane_scanner,"`")+1;
-$laenge=strpos($sane_scanner,"'")-$start;
-$scanner = "\"".substr($sane_scanner,$start,$laenge)."\"";
+$start = strpos($sane_result, "`") + 1;
+$length = strpos($sane_result, "'") - $start;
+$scanner = "\"".substr($sane_result, $start, $length)."\"";
 unset($start);
-unset($laenge);
+unset($length);
 
-$start=strpos($sane_scanner,"is a")+4;   // mit anderren scannern testen?
-$laenge=strpos($sane_scanner,"scanner")-$start;
-$scan_name = substr($sane_scanner,$start,$laenge);
+if (strlen($scanner) > 2)
+{
+  $scanner_ok = true;
+}
+
+$start = strpos($sane_result, "is a") + 4;   // mit anderren scannern testen?
+$length = strpos($sane_result, "scanner") - $start;
+$scan_name = substr($sane_result, $start, $length);
 unset($start);
-unset($laenge);
+unset($length);
+unset($sane_result);
 
-// ----
+$scan_ausgabe = $scan_name . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device = " . $scanner;
 
-$scan_ausgabe=$scan_name."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device = ".$scanner;
+
+// scanner device capabilities
+
+// allowed resolutions
+
+$sane_cmd = $SCANIMAGE . " --help | grep -m 1 resolution";
+$sane_result = `$sane_cmd`;
+unset($sane_cmd);
+
+if ($do_test_mode)
+{
+  $sane_result = "   --resolution 50..2450dpi [50]\n";
+}
+
+$start = strpos($sane_result, "n") + 2;
+$length = strpos($sane_result, "dpi") - $start;
+$list = "" . substr($sane_result, $start,$length) . "";
+unset($start);
+unset($length);
+unset($sane_result);
+
+// change "|" separated string $list into array of values
+// or generate a range of values.
+
+$length = strpos($list, "..");
+if ($length === false)
+{
+  $resolution_list = explode("|" , $list);
+
+  $resolution_max = (int)end($resolution_list);
+  $resolution_min = (int)reset($resolution_list);
+}
+else
+{
+  $resolution_list = array();
+
+  $resolution_min = (int)substr($list, 0, $length);
+  $resolution_max = (int)substr($list, $length + 2);
+
+  // lower resolutions
+
+  $list = array(
+    10, 20, 30, 40, 50, 60, 72, 75, 80, 90,
+    100, 120, 133, 144, 150, 160, 175, 180,
+    200, 216, 240, 266,
+    300, 320, 350, 360,
+    400, 480,
+    600,
+    720,
+    800,
+    900,
+  );
+
+  foreach ($list as $res)
+  {
+    if (($res >= $resolution_min) && ($res <= $resolution_max))
+    {
+      $resolution_list[] = $res;
+    }
+  }
+
+  // higher resolutions
+
+  $res = 1000;
+  while (($res >= $resolution_min) && ($res < $resolution_max))
+  {
+    $resolution_list[] = $res;
+    $res += 200;
+  }
+
+  $resolution_list[] = $resolution_max;
+}
+unset($length);
 
 ?>

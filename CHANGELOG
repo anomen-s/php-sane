@@ -1,23 +1,47 @@
    Changelog
   ~~~~~~~~~~~
 
-------------------------------------------------------------------------
+* 0.1.1
+	- phpSANE verifies that a scanner is connected and does not print
+	  strange errors.
+	- phpSANE is available in English and German.
+	- Automatic installation with a bash-script.
 
-* 0.5.0 - major update by John Walsh <john.walsh@mini-net.co.uk>
+* 0.2.0
+	- phpSANE supports preview now.
 
-June 2009
+* 0.3.0
+	- phpSANE supports OCR now (requires gocr).
 
-- updated/fixed code for latest PHP 5
+* 0.3.1
+	- You can specify your scanner manually (if phpSANE does not detect it).
+	- The automatic installation _should_ do all necessary things now.
 
-- fixed all functionality for scan options and file types
+* 0.3.2
+	- Fixed bug #1086548
 
-- added 'Extra' user options input area
+* 0.3.3
+	- Some feature enhancements by Stefan Bernshausen <stefan@bernshausen.org>
 
-- added 'help' page to web interface
+* 0.4.0
+	- Fixed bug #1104508
+	- Supports feature #1104513
+	- Code cleaned up.
 
-- re-write of html and css for more standard/flexible page layout
+* 0.4.1
+	- phpSANE now works without register_global
 
-- cleaned up the config file, and made all options configurable
-  from the config.php so that no other files need changing
+* 0.5.0
+	- major update by John Walsh <john.walsh@mini-net.co.uk>
+	- updated/fixed code for latest PHP 5
+	- fixed all functionality for scan options and file types
+	- added 'Extra' user options input area
+	- added 'help' page to web interface
+	- re-write of html and css for more standard/flexible page layout
+	- cleaned up the config file, and made all options configurable
+	  from the config.php so that no other files need changing
 
-------------------------------------------------------------------------
+* 0.5.1
+	- minor update by John Walsh <john.walsh@mini-net.co.uk>
+	- updated/fixed code for detecting resolutions supported, to include
+	  ranges

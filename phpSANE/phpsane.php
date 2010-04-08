@@ -96,34 +96,34 @@ echo "<tr>\n";
 
 echo "<td>\n";
 
-if (strlen($scanner) > 2)
+if ($scanner_ok)
 {
-include("menu.php");
+  include("menu.php");
 }
 else
 {
-if (0)
-{
-echo "<input type=hidden name=\"geometry_l\" value=\"".$geometry_l."\">\n";
-echo "<input type=hidden name=\"geometry_t\" value=\"".$geometry_t."\">\n";
-echo "<input type=hidden name=\"geometry_x\" value=\"".$geometry_x."\">\n";
-echo "<input type=hidden name=\"geometry_y\" value=\"".$geometry_y."\">\n";
-echo "<input type=hidden name=\"format\" value=\"".$format."\">\n";
-echo "<input type=hidden name=\"mode\" value=\"".$mode."\">\n";
-echo "<input type=hidden name=\"resolution\" value=\"".$resolution."\">\n";
-echo "<input type=hidden name=\"negative\" value=\"".$negative."\">\n";
-echo "<input type=hidden name=\"quality_cal\" value=\"".$quality_cal."\">\n";
-echo "<input type=hidden name=\"brightness\" value=\"".$brightness."\">\n";
-}
+  if (0)
+  {
+    echo "<input type=hidden name=\"geometry_l\" value=\"".$geometry_l."\">\n";
+    echo "<input type=hidden name=\"geometry_t\" value=\"".$geometry_t."\">\n";
+    echo "<input type=hidden name=\"geometry_x\" value=\"".$geometry_x."\">\n";
+    echo "<input type=hidden name=\"geometry_y\" value=\"".$geometry_y."\">\n";
+    echo "<input type=hidden name=\"format\" value=\"".$format."\">\n";
+    echo "<input type=hidden name=\"mode\" value=\"".$mode."\">\n";
+    echo "<input type=hidden name=\"resolution\" value=\"".$resolution."\">\n";
+    echo "<input type=hidden name=\"negative\" value=\"".$negative."\">\n";
+    echo "<input type=hidden name=\"quality_cal\" value=\"".$quality_cal."\">\n";
+    echo "<input type=hidden name=\"brightness\" value=\"".$brightness."\">\n";
+  }
 
-echo "<table cellspacing=\"0\" border=\"0\" cellpadding=\"0\" align=\"left\">\n";
-echo "<tr>\n";
-echo "<td class=\"achtung\" align=\"center\" valign=\"middle\">".$lang[$lang_id][33]."<br><br></td>\n";
-echo "</tr>\n";
-echo "<tr>\n";
-echo "<td align=\"center\" valign=\"middle\"><INPUT type=\"submit\" name=\"action\" value=\"".$lang[$lang_id][34]."\"></td>\n";
-echo "</tr>\n";
-echo "</table>\n";
+  echo "<table cellspacing=\"0\" border=\"0\" cellpadding=\"0\" align=\"left\">\n";
+  echo "<tr>\n";
+  echo "<td class=\"achtung\" align=\"center\" valign=\"middle\">".$lang[$lang_id][33]."<br><br></td>\n";
+  echo "</tr>\n";
+  echo "<tr>\n";
+  echo "<td align=\"center\" valign=\"middle\"><INPUT type=\"submit\" name=\"action\" value=\"".$lang[$lang_id][34]."\"></td>\n";
+  echo "</tr>\n";
+  echo "</table>\n";
 }
 
 echo "</td>\n";
