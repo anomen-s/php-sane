@@ -112,7 +112,7 @@ $geometry_y=0;
 
 $format="jpg";
 $mode="Color";
-$resolution=100;
+$resolution=150;
 
 $negative="no";
 $quality_cal= "no";
