@@ -1,4 +1,4 @@
-﻿   phpSANE   (Version 0.5.0)
+﻿   phpSANE   (Version 0.6.0)
   ~~~~~~~~~
 
 phpSANE ist ein in PHP geschriebenes web-basierendes Frontend für SANE.
@@ -6,6 +6,7 @@ Jetzt können Sie auch mit Ihrem Web-Browser scannen.
 
 Copyright (C) 2009  David Fröhlich <dfroe@gmx.de>
                     and John Walsh <john.walsh@mini-net.co.uk>
+                    and Wojciech Bronisz <wojtek@bronisz.eu>
 
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU
 General Public License, wie von der Free Software Foundation veröffentlicht,

@@ -123,39 +123,38 @@ $cmd_scan=$SCANIMAGE." -d ".$scanner.$cmd_geometry_l.$cmd_geometry_t.$cmd_geomet
 
 if ($error_input == 0)
 {
-  // preview
-  if ($action == $lang[$lang_id][24])
-  {
-    $preview_images = $TMP_PRAEFIX."/preview_".$sid.".jpg";
-    $cmd_device = $SCANIMAGE." -d ".$scanner." --resolution ".$PREVIEW_DPI."dpi -l 0mm -t 0mm -x ".$PREVIEW_WIDTH_MM."mm -y ".$PREVIEW_HEIGHT_MM."mm".$cmd_mode.$cmd_negative.$cmd_quality_cal.$cmd_brightness.$cmd_usr_opt." | ".$PNMTOJPEG." --quality=50 > ".$preview_images;
-  }
+	// preview
+	if ($action == $lang[$lang_id][24]) {
+		$preview_images = $TMP_PRAEFIX."/preview_".$sid.".jpg";
+		$cmd_device = $SCANIMAGE." -d ".$scanner." --resolution ".$PREVIEW_DPI."dpi -l 0mm -t 0mm -x ".$PREVIEW_WIDTH_MM."mm -y ".$PREVIEW_HEIGHT_MM."mm".$cmd_mode.$cmd_negative.$cmd_quality_cal.$cmd_brightness.$cmd_usr_opt." | ".$PNMTOJPEG." --quality=50 > ".$preview_images;
+	}
 
-  // scan
-  if ($action == $lang[$lang_id][27])
-  {
-    $file_save = $file_base . "." . $format;
-    $file_save_image = 1;
+	// scan
+	if ($action == $lang[$lang_id][27]) {
+		$file_save = $file_output.$_GET['nazwa'].".".$format;
+		if (file_exists($file_save)) {
+			$file_save=$file_output.$_GET['nazwa']."_".date("Y-m-d_H-i-s",time()).".".$format;
+		}
+		$file_save_image = 1;
 
-    if ($format == "jpg")
-    {
-      $cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 > ".$file_save;
-    }
-    if ($format == "pnm")
-    {
-      $cmd_device = $cmd_scan." > ".$file_save;
-    }
-    if ($format == "tif")
-    {
-      $cmd_device = $cmd_scan." | {$PNMTOTIFF} > ".$file_save;
-    }
-  }
+		if ($format == "jpg") {
+			$cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 > ".$file_save;
+		}
 
-  // ocr
-  if ($action == $lang[$lang_id][26])
-  {
-    $file_save = $file_base . ".txt";
-    $cmd_device = $cmd_scan." | ".$OCR." - > ".$file_save;
-  }
+		if ($format == "pnm") {
+			$cmd_device = $cmd_scan." > ".$file_save;
+		}
+
+		if ($format == "tif") {
+			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > ".$file_save;
+		}
+	}
+
+	// ocr
+	if ($action == $lang[$lang_id][26]) {
+		$file_save = $file_base . ".txt";
+		$cmd_device = $cmd_scan." | ".$OCR." - > ".$file_save;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -171,11 +170,10 @@ else
   $cmd_device = $lang[$lang_id][39];
 }
 
-if ($file_save !== '')
-{
-  echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
-  echo "window.open(\"./save.php?file_save=".$file_save."&file_save_image=".$file_save_image."&lang_id=".$lang_id."\",\"_blank\", \"width=400,height=500,left=320,top=200,scrollbars=yes,location=no,status=no,menubar=no\");\n";
-  echo "</script>\n";
+if (($file_save !== '')&&($save_type=='popup')) {
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
+	echo "window.open(\"./save.php?file_save=".$file_save."&file_save_image=".$file_save_image."&lang_id=".$lang_id."\",\"_blank\", \"width=400,height=500,left=320,top=200,scrollbars=yes,location=no,status=no,menubar=no\");\n";
+	echo "</script>\n";
 }
 
 if ($clean == 1) $cleaner_yes=`$cleaner`;

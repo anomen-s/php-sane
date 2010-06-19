@@ -1,13 +1,22 @@
-<?PHP
+<?php
+
 echo "<table class=\"tab_menu\">\n";
 echo "<col width=\"50%\">\n";
 echo "<col width=\"50%\">\n";
 
 ////////////////////////////////////////////////////////////////////////
+if (($file_save !== '')&&($save_type=='link')) {
+	echo "<tr>
+	<th colspan='2'>".$lang[$lang_id][42].": <a href='".$file_save."' target='_blank'>".$file_save."</a></th>
+	</tr>\n";
+}
 
-echo "<tr>\n";
-echo "<th colspan=\"2\">".$lang[$lang_id][31]."</th>\n";
-echo "</tr>\n";
+echo "<tr>
+	<th align='left'>".$lang[$lang_id][31]."</th>
+</tr>
+<tr>
+	<td align='left'> &nbsp; &nbsp; &nbsp;".$scan_ausgabe."</td>
+</tr>";
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -23,41 +32,35 @@ echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
-echo "<tr>\n";
-echo "<td colspan=\"2\" >".$scan_ausgabe."</td>\n";
-echo "</tr>\n";
+echo "<tr>
+	<th colspan=\"2\">".$lang[$lang_id][0]."</th>
+</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
 echo "<tr>\n";
-echo "<th colspan=\"2\">".$lang[$lang_id][0]."</th>\n";
-echo "</tr>\n";
-
-////////////////////////////////////////////////////////////////////////
-
-echo "<tr>\n";
-echo "<td align=\"right\">".$lang[$lang_id][1]."&nbsp;<INPUT type=\"text\" name=\"geometry_l\" value=\"".$geometry_l."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
+echo "<td align=\"right\">".$lang[$lang_id][1]."&nbsp;<INPUT type=\"text\" name=\"geometry_l\" id='pozL' value=\"".$geometry_l."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
 echo "<td align=\"right\"><font id=\"ecke_rot1\" class=\"ecke_rot1\">".$lang[$lang_id][5]."</font>&nbsp;<INPUT type=\"radio\" name=\"ecke\" value=\"lo\" checked></td>\n";
 echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
 echo "<tr>\n";
-echo "<td align=\"right\">".$lang[$lang_id][2]."&nbsp;<INPUT type=\"text\" name=\"geometry_t\" value=\"".$geometry_t."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
+echo "<td align=\"right\">".$lang[$lang_id][2]."&nbsp;<INPUT type=\"text\" name=\"geometry_t\" id='pozT' value=\"".$geometry_t."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
 echo "<td align=\"right\"><font id=\"ecke_rot2\">".$lang[$lang_id][6]."</font>&nbsp;<INPUT type=\"radio\" name=\"ecke\" value=\"ru\"></td>\n";
 echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
 echo "<tr>\n";
-echo "<td align=\"right\">".$lang[$lang_id][3]."&nbsp;<INPUT type=\"text\" name=\"geometry_x\" value=\"".$geometry_x."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
-echo "<td align=\"right\">".$lang[$lang_id][7]."&nbsp;<INPUT type=\"text\" name=\"PosX\" value=\"0\" size=\"4\"></td>\n";
+echo "<td align=\"right\">".$lang[$lang_id][3]."&nbsp;<INPUT type=\"text\" name=\"geometry_x\" id='geometry_x' value=\"".$geometry_x."\" size=\"4\" maxlength=\"3\" >&nbsp;mm</td>\n";
+echo "<td align=\"right\">".$lang[$lang_id][7]."&nbsp;<INPUT type='text' name='PosX' value='0' size='4'></td>\n";
 echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
 echo "<tr>\n";
-echo "<td align=\"right\">".$lang[$lang_id][4]."&nbsp;<INPUT type=\"text\" name=\"geometry_y\" value=\"".$geometry_y."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
+echo "<td align=\"right\">".$lang[$lang_id][4]."&nbsp;<INPUT type=\"text\" name=\"geometry_y\" id='geometry_y' value=\"".$geometry_y."\" size=\"4\" maxlength=\"3\">&nbsp;mm</td>\n";
 echo "<td align=\"right\">".$lang[$lang_id][8]."&nbsp;<INPUT type=\"text\" name=\"PosY\" value=\"0\" size=\"4\"></td>\n";
 echo "</tr>\n";
 
@@ -168,6 +171,15 @@ echo "<tr>\n";
 echo "<td colspan=\"2\" align=\"center\">".$lang[$lang_id][38]."&nbsp;<INPUT type=\"text\" value=\"".$usr_opt."\" name=\"usr_opt\" size=\"40\"></td>\n";
 echo "</tr>\n";
 }
+
+if (isset($_GET['nazwa'])) {
+	$plik_nazwa=$_GET['nazwa'];
+} else {
+	$plik_nazwa=time();
+}
+echo "<tr>\n";
+echo "<td colspan=\"2\" align=\"center\">".$lang[$lang_id][41]."&nbsp;<INPUT type='text' value='".$plik_nazwa."' name='nazwa' size='40'></td>\n";
+echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 

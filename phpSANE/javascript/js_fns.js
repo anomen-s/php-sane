@@ -102,7 +102,7 @@ function getclickPosXY(e)
   get_preview_image_xy(e);
 
   setPreview(x,y);
-
+	paint_area();
   return(true);
 }
 

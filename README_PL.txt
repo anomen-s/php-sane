@@ -1,8 +1,11 @@
    phpSANE   (Version 0.6.0)
   ~~~~~~~~~
 
-phpSANE is a web-based frontend for SANE written in PHP.
-Now you can scan with your web-browser, too.
+phpSANE jest interface'em do obsługi skanera napisanym w języku PHP
+wystarczy że skaner podłączony jest do komputera gdzie masz zainstalowany
+serwer www wraz z php, a użytkownik końcowy wystarczy że skorzysta
+z przeglądarki www - oro sposób na 'udostępnienie' dowolnego skanera w sieci
+lokalnej.
 
 Copyright (C) 2009  David Froehlich <dfroe@gmx.de>
                     and John Walsh <john.walsh@mini-net.co.uk>

@@ -45,3 +45,16 @@
 	- minor update by John Walsh <john.walsh@mini-net.co.uk>
 	- updated/fixed code for detecting resolutions supported, to include
 	  ranges
+
+* 0.6.0
+	- update by Wojciech Bronisz <wojtek@bronisz.eu>
+	- Draw a box when selecting the scan area
+	- Scanned file does not open pop-up windows (an option in config.php "save_type")
+	- Scanned files are saved in "output" directory
+	- While setting scan option is to broadcast the resulting
+	  file name (form field), if the file already exists in the
+	  directory "output" is added to the current date (YYYY-MM-dd HH-mm-ss)
+	- And other small fixes in the code needed for these things
+	- Add Polish language program.
+
+

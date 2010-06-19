@@ -1,4 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<?php 
+
+echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
@@ -7,8 +9,7 @@
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <title>phpSANE</title>
 </head>
-<body>
-<?PHP
+<body>';
 
 // phpSANE
 // Version: 0.5.0
@@ -32,42 +33,41 @@ echo "</style>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
-echo "<FORM name=\"menueForm\" action=\"phpsane.php\" method=\"GET\">\n";
+echo "<FORM name=\"menueForm\" action=\"phpsane.php\" method=\"GET\">
 
-echo "<input type=hidden name=\"first\" value=\"$first\">\n";
-echo "<input type=hidden name=\"lang_id\" value=\"$lang_id\">\n";
-echo "<input type=hidden name=\"sid\" value=\"$sid\">\n";
-echo "<input type=hidden name=\"preview_images\" value=\"$preview_images\">\n";
-echo "<input type=hidden name=\"preview_width\" value=\"$PREVIEW_WIDTH_MM\">\n";
-echo "<input type=hidden name=\"preview_height\" value=\"$PREVIEW_HEIGHT_MM\">\n";
-echo "<input type=hidden name=\"preview_border\" value=\"$PREVIEW_BORDER_PX\">\n";
-echo "<input type=hidden name=\"preview_scale\" value=\"$facktor\">\n";
+<input type=hidden name=\"first\" value=\"$first\">
+<input type=hidden name=\"lang_id\" value=\"$lang_id\">
+<input type=hidden name=\"sid\" value=\"$sid\">
+<input type=hidden name=\"preview_images\" value=\"$preview_images\">
+<input type=hidden name=\"preview_width\" value=\"$PREVIEW_WIDTH_MM\">
+<input type=hidden name=\"preview_height\" value=\"$PREVIEW_HEIGHT_MM\">
+<input type=hidden name=\"preview_border\" value=\"$PREVIEW_BORDER_PX\">
+<input type=hidden name=\"preview_scale\" value=\"$facktor\">\n";
 
-////////////////////////////////////////////////////////////////////////
 
 // page header
+// 		<td align='left'><b>".$lang[$lang_id][31]."</b><br> &nbsp; &nbsp; &nbsp;".$scan_ausgabe."</td>
 
-echo "<table class=\"page_header\">\n";
-echo "  <tr>\n";
-echo "    <td width=1px>\n";
-echo "      <input type=\"image\" name=\"lang_id\" value=\"0\" src=\"./bilder/de.gif\">\n";
-echo "      &nbsp;\n";
-echo "      <input type=\"image\" name=\"lang_id\" value=\"1\" src=\"./bilder/en.gif\">\n";
-echo "    </td>\n";
-echo "    <td align=\"center\">\n";
-echo "      <img src=\"./bilder/logo.jpg\" alt=\"phpSANE\" border=\"0\">\n";
-echo "    </td>\n";
-echo "  </tr>\n";
-echo "  <tr>\n";
-echo "    <td colspan=2>\n";
-echo "<IMG src=\"./bilder/black.gif\" width=\"100%\" height=\"2px\" align=\"middle\" border=\"0\">\n";
-echo "    </td>\n";
-echo "  </tr>\n";
-echo "</table>\n";
+echo "<table class='page_header' width='100%'>
+	<tr>
+		<td align='left' width='465'>
+			<input type='image' name='lang_id' value='0' src='./bilder/de.gif' border='0'>
+			<input type='image' name='lang_id' value='1' src='./bilder/en.gif' border='0'>
+			<input type='image' name='lang_id' value='2' src='./bilder/pl.gif' border='0'>
+		</td>
+		<td align='right'>
+			<img src='./bilder/logo.jpg' alt='phpSANE'>
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<IMG src=\"./bilder/black.gif\" width=\"100%\" height=\"2px\" align=\"middle\" border=\"0\">
+		</td>
+	</tr>
+</table>\n";
 
 // page header - end
 
-////////////////////////////////////////////////////////////////////////
 
 // testing debug box
 
@@ -132,9 +132,17 @@ echo "</td>\n";
 
 // preview area
 
-echo "<td class=\"tab_preview\">\n";
-echo "<IMG src=\"$preview_images\" width=\"$PREVIEW_WIDTH_PX\" height=\"$PREVIEW_HEIGHT_PX\" border=\"{$PREVIEW_BORDER_PX}px\" name=\"Preview\"><br>\n";
-echo "</td>\n";
+echo "<td class=\"tab_preview\">
+	<div id='scaner_glass'>
+		<div id='scan_preview'>
+			<IMG src=\"$preview_images\" width=\"$PREVIEW_WIDTH_PX\" height=\"$PREVIEW_HEIGHT_PX\" border=\"{$PREVIEW_BORDER_PX}px\" name=\"Preview\">
+		</div>
+			<div id='scan_area1'></div>
+			<div id='scan_area2'></div>
+			<div id='scan_area3'></div>
+			<div id='scan_area4'></div>
+	</div>
+</td>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -205,6 +213,7 @@ echo "</table>\n";
 echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
 echo "<!--\n";
 include("javascript/js_fns.js");
+include("javascript/ractangle.js");
 echo "//-->\n";
 echo "</script>\n";
 
