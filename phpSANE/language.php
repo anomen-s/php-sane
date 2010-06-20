@@ -38,7 +38,6 @@ $lang[0] = array("Scan-Bereich",       // 0
 		"OCR",                 // 26
 		"Scannen",             // 27
 		"Aufr&#228;umen",      // 28
-		//"Zur&#252;ecksetzen",       // 28
 		"Beim Vorschau Scan<br><br>Keine Auswahl<br>Kein Datei Format<br>Keine Aufl&#246;sung DPI",  // 29
 		"Maximal werte beim Scannen<br><br>DIN-A4<br>Aufl&#246;sung DPI = 5 - 600",  // 30
 		"Scanner Device",      // 31
@@ -51,8 +50,8 @@ $lang[0] = array("Scan-Bereich",       // 0
 		"Extra",               // 38
 		"kein Abtastbefehl",   // 39
 		"Seitengr&#246;&#223;e", // 40
-		"File name (EN)",           // 41
-		"Output file (EN)",         // 42
+		"Dateiname",           // 41
+		"Ausgabedatei",        // 42
 );
 
 ////////////////////////////////////////////////////////////////////////
