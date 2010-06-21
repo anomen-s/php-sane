@@ -1,4 +1,4 @@
-<?PHP
+<?php
 
 // 0 = German
 
@@ -103,14 +103,35 @@ $lang[1] = array("Scan Area",          // 0
 		"Output file",         // 42
 );
 
+////////////////////////////////////////////////////////////////////////
+
 // 2 - PL
+//Ą	&#260;
+//ą	&#261;
+//Ć	&#262;
+//ć	&#263;
+//Ę	&#280;
+//ę	&#281;
+//Ł	&#321;
+//ł	&#322;
+//Ń	&#323;
+//ń	&#324;
+//Ó	&#211;
+//ó	&#243;
+//Ś	&#346;
+//ś	&#347;
+//Ź	&#377;
+//ź	&#378;
+//Ż	&#379;
+//ż	&#380;
+
 
 $lang[2] = array("Obszar skanowania",        // 0
 		"Lewy",                      // 1
-		"Gora",                      // 2
-		"Szerokosc",                 // 3
-		"Wysokosc",                  // 4
-		"Lewy gorny",                // 5
+		"G&#243;ra",                 // 2
+		"Szeroko&#347;&#263;",       // 3
+		"Wysoko&#347;&#263;",        // 4
+		"Lewy g&#243;rny",           // 5
 		"Dolny prawy",               // 6
 		"Nowe X",                    // 7
 		"Nowy Y",                    // 8
@@ -120,27 +141,27 @@ $lang[2] = array("Obszar skanowania",        // 0
 		"PNM",                       // 12
 		"TIFF",                      // 13
 		"Mode",                      // 14
-		"Pelny kolor (24bit)",       // 15
-		"Skala szarosci",            // 16
-		"Czarno - biale",            // 17
-		"Rezdzielczosc DPI",         // 18
+		"Pe&#322;ny kolor (24bit)",  // 15
+		"Skala szaro&#347;ci",       // 16
+		"Czarno - bia&#322;e",       // 17
+		"Rezdzielczo&#347;&#263; DPI",// 18
 		"Color",                     // 19
-		"Negative",                  // 20
+		"Negatyw",                   // 20
 		"Balans bieli",              // 21
-		"Jasnosc",                   // 22
+		"Jasno&#347;&#263;",         // 22
 		"Kontrast",                  // 23
-		"Podglad",                   // 24
+		"Podgląd",                   // 24
 		"Reset",                     // 25
 		"OCR",                       // 26
 		"Skanuj",                    // 27
-		"Wyczysc",                   // 28
-		"Podglad skanu<br><br>Brak wybranego obszaru<br>Brak wybranego typu pliku<br>Brak wybranej rozdzielczosci DPI", // 29
+		"Wyczyść",                   // 28
+		"Podgl&#261;d skanu<br><br>Brak wybranego obszaru<br>Brak wybranego typu pliku<br>Brak wybranej rozdzielczo&#347;ci DPI", // 29
 		"Max value Scan<br><br>DIN-A4<br>Resolution DPI = 5 - 600",  // 30
 		"Sterownik skanera",         // 31
 		"oops... inwazja kosmitow",  // 32
-		"No scanners were identified.<br>If you were expecting something different, check that the scanner is plugged in, turned on and detected by the sane-find-scanner tool (if appropriate).<br>Please read the documentation which came with this software (README, FAQ, manpages).",      // 33
-		"Sprobuj ponownie",          // 34
-		"Kliknij prawym klawiszem aby zapisac", // 35
+		"Nie znaleziono skanera.<br>If you were expecting something different, check that the scanner is plugged in, turned on and detected by the sane-find-scanner tool (if appropriate).<br>Please read the documentation which came with this software (README, FAQ, manpages).",      // 33
+		"Spr&#243;buj ponownie",     // 34
+		"Kliknij prawym klawiszem aby zapisa&#263;", // 35
 		"Zamknij",                   // 36
 		"Pomoc",                     // 37
 		"Dodatkowe opcje",           // 38

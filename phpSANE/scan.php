@@ -2,10 +2,9 @@
 $lang_error=$lang[$lang_id][32];
 $error_input=0;
 
-function scan_error(&$scan_ausgabe, &$error_input, $lang_error)
-{
-  $scan_ausgabe="!!!!!!!! ".$lang_error." !!!!!!!!";
-  $error_input=1;
+function scan_error(&$scan_ausgabe, &$error_input, $lang_error) {
+	$scan_ausgabe="!!!!!!!! ".$lang_error." !!!!!!!!";
+	$error_input=1;
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -13,47 +12,35 @@ function scan_error(&$scan_ausgabe, &$error_input, $lang_error)
 // build the scan command options
 
 $cmd_geometry_l="";
-if (($geometry_l >= 0) && ($geometry_l <= $PREVIEW_WIDTH_MM))
-{
-  $cmd_geometry_l=" -l ".$geometry_l."mm";
-}
-else
-{
-  $lang[$lang_id][1]="<span class=\"input_error\">".$lang[$lang_id][1]."</span>";
-  scan_error($scan_ausgabe, $error_input, $lang_error);
+if (($geometry_l >= 0) && ($geometry_l <= $PREVIEW_WIDTH_MM)) {
+	$cmd_geometry_l=" -l ".$geometry_l."mm";
+} else {
+	$lang[$lang_id][1]="<span class=\"input_error\">".$lang[$lang_id][1]."</span>";
+	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
 $cmd_geometry_t="";
-if (($geometry_t >= 0) && ($geometry_t <= $PREVIEW_HEIGHT_MM))
-{
-  $cmd_geometry_t=" -t ".$geometry_t."mm";
-}
-else
-{
-  $lang[$lang_id][2]="<span class=\"input_error\">".$lang[$lang_id][2]."</span>";
-  scan_error($scan_ausgabe, $error_input, $lang_error);
+if (($geometry_t >= 0) && ($geometry_t <= $PREVIEW_HEIGHT_MM)) {
+	$cmd_geometry_t=" -t ".$geometry_t."mm";
+} else {
+	$lang[$lang_id][2]="<span class=\"input_error\">".$lang[$lang_id][2]."</span>";
+	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
 $cmd_geometry_x="";
-if (($geometry_x >= 0) && ($geometry_x <= $PREVIEW_WIDTH_MM))
-{
-  $cmd_geometry_x=" -x ".$geometry_x."mm";
-}
-else
-{
-  $lang[$lang_id][3]="<span class=\"input_error\">".$lang[$lang_id][3]."</span>";
-  scan_error($scan_ausgabe, $error_input, $lang_error);
+if (($geometry_x >= 0) && ($geometry_x <= $PREVIEW_WIDTH_MM)) {
+	$cmd_geometry_x=" -x ".$geometry_x."mm";
+} else {
+	$lang[$lang_id][3]="<span class=\"input_error\">".$lang[$lang_id][3]."</span>";
+	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
 $cmd_geometry_y="";
-if (($geometry_y >= 0) && ($geometry_y <= $PREVIEW_HEIGHT_MM))
-{
-  $cmd_geometry_y=" -y ".$geometry_y."mm";
-}
-else
-{
-  $lang[$lang_id][4]="<span class=\"input_error\">".$lang[$lang_id][4]."</span>";
-  scan_error($scan_ausgabe, $error_input, $lang_error);
+if (($geometry_y >= 0) && ($geometry_y <= $PREVIEW_HEIGHT_MM)) {
+	$cmd_geometry_y=" -y ".$geometry_y."mm";
+} else {
+	$lang[$lang_id][4]="<span class=\"input_error\">".$lang[$lang_id][4]."</span>";
+	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
 $cmd_mode=" --mode=\"".$mode."\"";
@@ -61,47 +48,35 @@ $cmd_mode=" --mode=\"".$mode."\"";
 //$cmd_depth=" --depth ".$depth;
 
 $cmd_resolution="";
-if (($resolution >= $resolution_min) && ($resolution <= $resolution_max))
-{
-  $cmd_resolution=" --resolution ".$resolution."dpi";
-}
-else
-{
-  $lang[$lang_id][18]="<span class=\"input_error\">".$lang[$lang_id][18]."</span>";
-  scan_error($scan_ausgabe, $error_input, $lang_error);
+if (($resolution >= $resolution_min) && ($resolution <= $resolution_max)) {
+	$cmd_resolution=" --resolution ".$resolution."dpi";
+} else {
+	$lang[$lang_id][18]="<span class=\"input_error\">".$lang[$lang_id][18]."</span>";
+	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
 $cmd_negative="";
-if ($do_negative)
-{
-  if ($negative == "yes") $cmd_negative="";
+if ($do_negative) {
+	if ($negative == "yes") $cmd_negative="";
 }
 
 $cmd_quality_cal="";
-if ($do_quality_cal)
-{
-  if ($quality_cal == "yes") $cmd_quality_cal="";
+if ($do_quality_cal) {
+	if ($quality_cal == "yes") $cmd_quality_cal="";
 }
 
 $cmd_brightness="";
-if ($do_brightness)
-{
-  if (1)
-  {
-    if ($brightness) $cmd_brightness=" --brightness ".$brightness;
-  }
-  else
-  {
-    if (($brightness >= -100) && ($brightness <= 100))
-    {
-      $cmd_brightness=" --brightness ".$brightness;
-    }
-    else
-    {
-      $lang[$lang_id][22]="<span class=\"input_error\">".$lang[$lang_id][22]."</span>";
-      scan_error($scan_ausgabe, $lang_error);
-    }
-  }
+if ($do_brightness) {
+	if (1) {
+		if ($brightness) $cmd_brightness=" --brightness ".$brightness;
+	} else {
+		if (($brightness >= -100) && ($brightness <= 100)) {
+			$cmd_brightness=" --brightness ".$brightness;
+		} else {
+			$lang[$lang_id][22]="<span class=\"input_error\">".$lang[$lang_id][22]."</span>";
+			scan_error($scan_ausgabe, $lang_error);
+			}
+	}
 }
 
 $cmd_usr_opt="";
@@ -131,9 +106,9 @@ if ($error_input == 0)
 
 	// scan
 	if ($action == $lang[$lang_id][27]) {
-		$file_save = $file_output.$_GET['nazwa'].".".$format;
+		$file_save = $file_output.$_POST['nazwa'].".".$format;
 		if (file_exists($file_save)) {
-			$file_save=$file_output.$_GET['nazwa']."_".date("Y-m-d_H-i-s",time()).".".$format;
+			$file_save=$file_output.$_POST['nazwa']."_".date("Y-m-d_H-i-s",time()).".".$format;
 		}
 		$file_save_image = 1;
 
@@ -152,7 +127,10 @@ if ($error_input == 0)
 
 	// ocr
 	if ($action == $lang[$lang_id][26]) {
-		$file_save = $file_base . ".txt";
+		$file_save = $file_output.$_POST['nazwa'].".txt";
+		if (file_exists($file_save)) {
+			$file_save=$file_output.$_POST['nazwa']."_".date("Y-m-d_H-i-s",time()).".txt";
+		}
 		$cmd_device = $cmd_scan." | ".$OCR." - > ".$file_save;
 	}
 }
@@ -161,13 +139,10 @@ if ($error_input == 0)
 
 // perform actions required
 
-if ($cmd_device !== '')
-{
-  $scan_yes=`$cmd_device`;
-}
-else
-{
-  $cmd_device = $lang[$lang_id][39];
+if ($cmd_device !== '') {
+	$scan_yes=`$cmd_device`;
+} else {
+	$cmd_device = $lang[$lang_id][39];
 }
 
 if (($file_save !== '')&&($save_type=='popup')) {

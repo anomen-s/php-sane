@@ -1,16 +1,14 @@
-<?PHP
+<?php
+
 
 // ---------------------------------------------------------------------
+function add_page_size($page_name, $page_x, $page_y) {
+	global $PREVIEW_WIDTH_MM, $PREVIEW_HEIGHT_MM;
+	global $PAGE_SIZE_LIST;
 
-function add_page_size($page_name, $page_x, $page_y)
-{
-  global $PREVIEW_WIDTH_MM, $PREVIEW_HEIGHT_MM;
-  global $PAGE_SIZE_LIST;
-
-  if (($page_x <= $PREVIEW_WIDTH_MM) && ($page_y <= $PREVIEW_HEIGHT_MM))
-  {
-    $PAGE_SIZE_LIST[] = array(0 => $page_name, $page_x, $page_y);
-  }
+	if (($page_x <= $PREVIEW_WIDTH_MM) && ($page_y <= $PREVIEW_HEIGHT_MM)) {
+		$PAGE_SIZE_LIST[] = array(0 => $page_name, $page_x, $page_y);
+	}
 }
 
 
@@ -27,8 +25,8 @@ function add_page_size($page_name, $page_x, $page_y)
  *
  * @return 	string	html source with selectbox
  */
-function html_selectbox($name, $values, $selected=NULL, $attributes=array())
-{
+
+function html_selectbox($name, $values, $selected=NULL, $attributes=array()) {
 	$attr_html = '';
 	if(is_array($attributes) && !empty($attributes))
 	{
@@ -69,3 +67,4 @@ function html_selectbox($name, $values, $selected=NULL, $attributes=array())
 // ---------------------------------------------------------------------
 
 ?>
+

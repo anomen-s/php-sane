@@ -3,17 +3,18 @@
 echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="author" content="root">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 <title>phpSANE</title>
 </head>
-<body>';
+<body onload="paint_area()">';
 
 // phpSANE
-// Version: 0.5.0
+// Version: 0.6.0
 // John Walsh <john.walsh@mini-net.co.uk>
+// Wojciech Bronisz <wojtek@bronisz.eu>
 
 include("functions.php");
 include("language.php");
@@ -22,27 +23,24 @@ include("scan.php");
 
 ////////////////////////////////////////////////////////////////////////
 
-if (0)
-{
-echo "<style type=\"text/css\">\n";
-echo "<!--\n";
+if (0) {
+echo "<style type=\"text/css\">\n<!--\n";
 include("css/style.css");
-echo "-->\n";
-echo "</style>\n";
+echo "-->\n</style>\n";
 }
 
 ////////////////////////////////////////////////////////////////////////
 
-echo "<FORM name=\"menueForm\" action=\"phpsane.php\" method=\"GET\">
+echo "<FORM name='menueForm' action='phpsane.php' method='POST'>
 
-<input type=hidden name=\"first\" value=\"$first\">
-<input type=hidden name=\"lang_id\" value=\"$lang_id\">
-<input type=hidden name=\"sid\" value=\"$sid\">
-<input type=hidden name=\"preview_images\" value=\"$preview_images\">
-<input type=hidden name=\"preview_width\" value=\"$PREVIEW_WIDTH_MM\">
-<input type=hidden name=\"preview_height\" value=\"$PREVIEW_HEIGHT_MM\">
-<input type=hidden name=\"preview_border\" value=\"$PREVIEW_BORDER_PX\">
-<input type=hidden name=\"preview_scale\" value=\"$facktor\">\n";
+	<input type=hidden name='first' value='$first'>
+	<input type=hidden name='lang_id' value='$lang_id'>
+	<input type=hidden name='sid' value='$sid'>
+	<input type=hidden name='preview_images' value='$preview_images'>
+	<input type=hidden name='preview_width' value='$PREVIEW_WIDTH_MM'>
+	<input type=hidden name='preview_height' value='$PREVIEW_HEIGHT_MM'>
+	<input type=hidden name='preview_border' value='$PREVIEW_BORDER_PX'>
+	<input type=hidden name='preview_scale' value='$facktor'>\n";
 
 
 // page header
@@ -61,7 +59,7 @@ echo "<table class='page_header' width='100%'>
 	</tr>
 	<tr>
 		<td colspan=2>
-			<IMG src=\"./bilder/black.gif\" width=\"100%\" height=\"2px\" align=\"middle\" border=\"0\">
+			<IMG src='./bilder/black.gif' width='100%' height='2px' align='middle' border='0'>
 		</td>
 	</tr>
 </table>\n";
@@ -70,16 +68,13 @@ echo "<table class='page_header' width='100%'>
 
 
 // testing debug box
-
-if ($do_test_mode)
-{
-echo "<table class=\"page_body\">\n";
-echo "<tr>\n";
-echo "<td align=\"center\">\n";
-echo "Debug <INPUT type=\"text\" name=\"debug\" value=\"\" size=\"64\">\n";
-echo "</td>\n";
-echo "</tr>\n";
-echo "</table>\n";
+if ($do_test_mode) {
+	echo "
+	<table class='page_body'>
+		<tr>
+		<td align='center'>Debug <INPUT type='text' name='debug' value='' size='64'></td>
+		</tr>
+	</table>\n";
 }
 
 
@@ -87,7 +82,7 @@ echo "</table>\n";
 
 // page body
 
-echo "<table class=\"page_body\">\n";
+echo "<table class='page_body'>\n";
 echo "<tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
@@ -96,129 +91,106 @@ echo "<tr>\n";
 
 echo "<td>\n";
 
-if ($scanner_ok)
-{
-  include("menu.php");
-}
-else
-{
-  if (0)
-  {
-    echo "<input type=hidden name=\"geometry_l\" value=\"".$geometry_l."\">\n";
-    echo "<input type=hidden name=\"geometry_t\" value=\"".$geometry_t."\">\n";
-    echo "<input type=hidden name=\"geometry_x\" value=\"".$geometry_x."\">\n";
-    echo "<input type=hidden name=\"geometry_y\" value=\"".$geometry_y."\">\n";
-    echo "<input type=hidden name=\"format\" value=\"".$format."\">\n";
-    echo "<input type=hidden name=\"mode\" value=\"".$mode."\">\n";
-    echo "<input type=hidden name=\"resolution\" value=\"".$resolution."\">\n";
-    echo "<input type=hidden name=\"negative\" value=\"".$negative."\">\n";
-    echo "<input type=hidden name=\"quality_cal\" value=\"".$quality_cal."\">\n";
-    echo "<input type=hidden name=\"brightness\" value=\"".$brightness."\">\n";
-  }
+if ($scanner_ok) {
+	include("menu.php");
+} else {
+	echo "
+	<input type=hidden name='geometry_l' value='".$geometry_l."'>
+	<input type=hidden name='geometry_t' value='".$geometry_t."'>
+	<input type=hidden name='geometry_x' value='".$geometry_x."'>
+	<input type=hidden name='geometry_y' value='".$geometry_y."'>
+	<input type=hidden name='format' value='".$format."'>
+	<input type=hidden name='mode' value='".$mode."'>
+	<input type=hidden name='resolution' value='".$resolution."'>
+	<input type=hidden name='negative' value='".$negative."'>
+	<input type=hidden name='quality_cal' value='".$quality_cal."'>
+	<input type=hidden name='brightness' value='".$brightness."'>
 
-  echo "<table cellspacing=\"0\" border=\"0\" cellpadding=\"0\" align=\"left\">\n";
-  echo "<tr>\n";
-  echo "<td class=\"achtung\" align=\"center\" valign=\"middle\">".$lang[$lang_id][33]."<br><br></td>\n";
-  echo "</tr>\n";
-  echo "<tr>\n";
-  echo "<td align=\"center\" valign=\"middle\"><INPUT type=\"submit\" name=\"action\" value=\"".$lang[$lang_id][34]."\"></td>\n";
-  echo "</tr>\n";
-  echo "</table>\n";
+	<table cellspacing='0' border='0' cellpadding='0' align='left'>
+		<tr>
+			<td class='achtung' align='center' valign='middle'>".$lang[$lang_id][33]."<br><br></td>
+		</tr>
+		<tr>
+			<td align='center' valign='middle'><INPUT type='submit' name='action' value='".$lang[$lang_id][34]."'></td>
+		</tr>
+	</table>\n";
 }
 
 echo "</td>\n";
 
-////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
 // preview area
 
-echo "<td class=\"tab_preview\">
+echo "<td class='tab_preview'>
 	<div id='scaner_glass'>
 		<div id='scan_preview'>
-			<IMG src=\"$preview_images\" width=\"$PREVIEW_WIDTH_PX\" height=\"$PREVIEW_HEIGHT_PX\" border=\"{$PREVIEW_BORDER_PX}px\" name=\"Preview\">
+			<IMG src='$preview_images' width='$PREVIEW_WIDTH_PX' height='$PREVIEW_HEIGHT_PX' border='".$PREVIEW_BORDER_PX."px' name='Preview'>
 		</div>
-			<div id='scan_area1'></div>
-			<div id='scan_area2'></div>
-			<div id='scan_area3'></div>
-			<div id='scan_area4'></div>
+		<div id='scan_area1'></div>
+		<div id='scan_area2'></div>
+		<div id='scan_area3'></div>
+		<div id='scan_area4'></div>
 	</div>
 </td>\n";
 
+
 ////////////////////////////////////////////////////////////////////////
+echo "</tr>
+</table>\n";
 
-echo "</tr>\n";
-echo "</table>\n";
-
-if (0)
-{
-echo "<p>\n";
-echo "width=\"$PREVIEW_WIDTH_PX\" height=\"$PREVIEW_HEIGHT_PX\"\n";
-echo "</p>\n";
-}
 
 // page body - end
 
-////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////
 // page footer
+echo "<table class='page_footer'>\n";
 
-echo "<table class=\"page_footer\">\n";
-
-////////////////////////////////////////////////////////////////////////
-
-echo "<tr>\n";
-echo "<td>\n";
-echo "<IMG src=\"./bilder/black.gif\" width=\"100%\" height=\"2px\" align=\"middle\" border=\"0\">\n";
-echo "</td>\n";
-echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
+echo "<tr>
+	<td>
+		<IMG src='./bilder/black.gif' width='100%' height='2px' align='middle' border='0'>
+	</td>
+</tr>\n";
 
+////////////////////////////////////////////////////////////////////////
 // jdw:
-echo "<tr>\n";
-echo "<td>\n";
-echo "# $cmd_device\n";
-echo "</td>\n";
-echo "</tr>\n";
+echo "<tr>
+	<td>
+		# $cmd_device
+	</td>
+</tr>\n";
+
 
 ////////////////////////////////////////////////////////////////////////
-
-if (0)
-{
-echo "<tr>\n";
-echo "<td>\n";
-echo "$lang[$lang_id][30]</td>\n";
-echo "</td>\n";
-echo "</tr>\n";
+if (0) {
+echo "<tr>
+	<td>
+		$lang[$lang_id][30]</td>
+	</td>
+</tr>\n";
 }
 
-////////////////////////////////////////////////////////////////////////
-
-echo "<tr>\n";
-echo "<td>\n";
-echo "<IMG src=\"./bilder/black.gif\" width=\"100%\" height=\"2px\" align=\"middle\" border=\"0\">\n";
-echo "</td>\n";
-echo "</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
-
-echo "</table>\n";
-
-// page footer - end
+echo "<tr>
+	<td>
+	<IMG src='./bilder/black.gif' width='100%' height='2px' align='middle' border='0'>
+	</td>
+</tr>\n";
 
 ////////////////////////////////////////////////////////////////////////
 
-// inline javascript functions, after form areas
+echo "</table>
+</FORM>
 
-echo "<script language=\"JavaScript\" type=\"text/javascript\">\n";
-echo "<!--\n";
-include("javascript/js_fns.js");
-include("javascript/ractangle.js");
-echo "//-->\n";
-echo "</script>\n";
-
-echo "</FORM>\n";
-?>
+<script type='text/javascript' src='./javascript/js_fns.js'></script>
+<script type='text/javascript' src='./javascript/ractangle.js'></script>
 
 </body>
-</html>
+</html>\n";
+
+?>
+

@@ -90,14 +90,14 @@ $first=1;
 $clear=0; // jdw: does not do anything ?
 $clean=0;
 
-if (isset($_GET['first'])) $first=$_GET['first'];
+if (isset($_POST['first'])) $first=$_POST['first'];
 if ($first) { $clean=1; $clear=1; }
 $first=0;
 
-if(isset($_GET['lang_id'])) { $lang_id=$_GET['lang_id']; }
+if(isset($_POST['lang_id'])) { $lang_id=$_POST['lang_id']; }
 
 $action="";
-if(isset($_GET['action'])) { $action=$_GET['action']; }
+if(isset($_POST['action'])) { $action=$_POST['action']; }
 if((ereg_replace("&#228;", "9", $lang[$lang_id][28])) == (ereg_replace("\xE4", "9", $action))) { $clean=1; $clear=1; }
 if((ereg_replace("&#252;", "9", $lang[$lang_id][25])) == (ereg_replace("\xFC", "9", $action))) $clear=1;
 
@@ -127,29 +127,29 @@ $usr_opt="";
 // user options
 
 if (!$clean) {
-	if (isset($_GET['sid'])) $sid=$_GET['sid'];
+	if (isset($_POST['sid'])) $sid=$_POST['sid'];
 
-	if (isset($_GET['preview_images'])) $preview_images=$_GET['preview_images'];
+	if (isset($_POST['preview_images'])) $preview_images=$_POST['preview_images'];
 
-	if (isset($_GET['geometry_l'])) $geometry_l=$_GET['geometry_l'];
-	if (isset($_GET['geometry_t'])) $geometry_t=$_GET['geometry_t'];
-	if (isset($_GET['geometry_x'])) $geometry_x=$_GET['geometry_x'];
-	if (isset($_GET['geometry_y'])) $geometry_y=$_GET['geometry_y'];
+	if (isset($_POST['geometry_l'])) $geometry_l=$_POST['geometry_l'];
+	if (isset($_POST['geometry_t'])) $geometry_t=$_POST['geometry_t'];
+	if (isset($_POST['geometry_x'])) $geometry_x=$_POST['geometry_x'];
+	if (isset($_POST['geometry_y'])) $geometry_y=$_POST['geometry_y'];
 
-	if (isset($_GET['format'])) $format=$_GET['format'];
-	if (isset($_GET['mode'])) $mode=$_GET['mode'];
-	if (isset($_GET['resolution'])) $resolution=$_GET['resolution'];
+	if (isset($_POST['format'])) $format=$_POST['format'];
+	if (isset($_POST['mode'])) $mode=$_POST['mode'];
+	if (isset($_POST['resolution'])) $resolution=$_POST['resolution'];
 
-	if (isset($_GET['negative'])) $negative="yes";
-	if (isset($_GET['quality_cal'])) $quality_cal="yes";
-	if (isset($_GET['brightness'])) $brightness=$_GET['brightness'];
+	if (isset($_POST['negative'])) $negative="yes";
+	if (isset($_POST['quality_cal'])) $quality_cal="yes";
+	if (isset($_POST['brightness'])) $brightness=$_POST['brightness'];
 
-	if (isset($_GET['usr_opt'])) $usr_opt=$_GET['usr_opt'];
+	if (isset($_POST['usr_opt'])) $usr_opt=$_POST['usr_opt'];
 }
 
-//if (isset($_GET['scanner'])) $scanner=$_GET['scanner'];
-//if (isset($_GET['scan_name'])) $scan_name=$_GET['scan_name'];
-//if($_GET['depth']) $depth=$_GET['depth']; else $depth="8";   // wers braucht
+//if (isset($_POST['scanner'])) $scanner=$_POST['scanner'];
+//if (isset($_POST['scan_name'])) $scan_name=$_POST['scan_name'];
+//if($_POST['depth']) $depth=$_POST['depth']; else $depth="8";   // wers braucht
 
 
 // verify usr_opt - keep only valid chars, otherwise replace with an 'X'
@@ -216,7 +216,7 @@ unset($start);
 unset($length);
 unset($sane_result);
 
-$scan_ausgabe = $scan_name . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Device = " . $scanner;
+$scan_ausgabe = $scan_name . "<br> &nbsp; &nbsp; &nbsp; Device = " . $scanner;
 
 
 // scanner device capabilities
@@ -286,3 +286,4 @@ if ($length === false) {
 unset($length);
 
 ?>
+

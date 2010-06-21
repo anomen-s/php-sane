@@ -31,4 +31,3 @@ function paint_area() {
 	area4.style.height=0;
 }
 
-paint_area();
