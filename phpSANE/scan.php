@@ -108,20 +108,20 @@ if ($error_input == 0)
 	if ($action == $lang[$lang_id][27]) {
 		$file_save = $file_output.$_POST['nazwa'].".".$format;
 		if (file_exists($file_save)) {
-			$file_save=$file_output.$_POST['nazwa']."_".date("Y-m-d_H-i-s",time()).".".$format;
+			$file_save=$file_output.$_POST['nazwa']." (".date("Y-m-d_H-i-s",time()).").".$format;
 		}
 		$file_save_image = 1;
 
 		if ($format == "jpg") {
-			$cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 > ".$file_save;
+			$cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 > \"".$file_save."\"";
 		}
 
 		if ($format == "pnm") {
-			$cmd_device = $cmd_scan." > ".$file_save;
+			$cmd_device = $cmd_scan." > \"".$file_save."\"";
 		}
 
 		if ($format == "tif") {
-			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > ".$file_save;
+			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > \"".$file_save."\"";
 		}
 	}
 
@@ -129,9 +129,10 @@ if ($error_input == 0)
 	if ($action == $lang[$lang_id][26]) {
 		$file_save = $file_output.$_POST['nazwa'].".txt";
 		if (file_exists($file_save)) {
-			$file_save=$file_output.$_POST['nazwa']."_".date("Y-m-d_H-i-s",time()).".txt";
+			$file_save=$file_output.$_POST['nazwa']." (".date("Y-m-d_H-i-s",time()).").txt";
 		}
-		$cmd_device = $cmd_scan." | ".$OCR." - > ".$file_save;
+
+		$cmd_device = $cmd_scan." | ".$OCR." - > \"".$file_save."\"";
 	}
 }
 
