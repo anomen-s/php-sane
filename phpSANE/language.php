@@ -173,4 +173,58 @@ $lang[2] = array("Obszar skanowania",        // 0
 
 ////////////////////////////////////////////////////////////////////////
 
+// 3 = Finnish
+
+/*
+ä = &#228;
+ö = &#246;
+*/
+
+$lang[3] = array("Skannattava alue",          // 0
+		"Vasen",                // 1
+		"Yl&#228",                 // 2
+		"Leveys",               // 3
+		"Korkeus",              // 4
+		"Yl&#228 vasen",            // 5
+		"Ala oikea",        // 6
+		"Uusi X",               // 7
+		"Uusi Y",               // 8
+		"Skannaus asetukset",        // 9
+		"Tiedoston formaatti",         // 10
+		"JPG",                 // 11
+		"PNM",                 // 12
+		"TIFF",                // 13
+		"Tila",                // 14
+		"24 bittinen v&#228ritila",        // 15
+		"Harmaas&#228vy",           // 16
+		"Yksiv&#228ri",          // 17
+		"Resoluutio DPI",      // 18
+		"V&#228ri",               // 19
+		"Negatiivi",            // 20
+		"Valkotasapaino",   // 21
+		"Kirkkaus",          // 22
+		"Kontrasti",            // 23
+		"Esikatselu",             // 24
+		"Palauta asetukset",               // 25
+		"OCR",                 // 26
+		"Skannaa",                // 27
+		"Siivoa",               // 28
+		"Esikatsele skannausta<br><br>Ei valintaa<br>Ei tiedoston formaattia<br>Ei resoluutiota DPI", // 29
+		"Suurin skannauksen laatu<br><br>DIN-A4<br>Resoluutio DPI = 5 - 600",  // 30
+		"Skannaus laite",      // 31
+		"VIRHE",               // 32
+		"Yht&#228&#228n skanneria ei tunnistettu.<br>Jos odotit jotain muuta, niin tarkista ett&#228 skanneri on kytketty tietokoneeseen, laitettu p&#228&#228lle ja ett&#228 sane-find-scanner ty&#246kalu l&#228yt&#228&#228 sen. <br>Ole hyv&#228 ja lue t&#228m&#228n ohjelmiston kanssa tullut dokumentaatio(README, FAQ, manpages).",      // 33
+		"Yrit&#228 uudelleen",           // 34
+		"Paina oikeaa hiiren nappia tallentaaksesi", // 35
+		"SULJE",               // 36
+		"Ohje",                // 37
+		"Extrat",               // 38
+		"ei skanner komentoa",     // 39
+		"Sivun koko",           // 40
+		"Tiedoston nimi",           // 41
+		"Tiedosto johon tallennetaan",         // 42
+);
+
+////////////////////////////////////////////////////////////////////////
+
 ?>

@@ -61,4 +61,4 @@
 	- JS scripting code is not inserted directly into the HTML code
 	- forms are sent by POST
 	- changed encoding to UTF-8 with a view to creating translations in other languages
-
+	- added finish translation
