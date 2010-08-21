@@ -32,7 +32,7 @@ $SAVE_PLACE = "./";
 
 // set your scanner maxiumum page size, and a low dpi for previews
 
-$PREVIEW_WIDTH_MM   = 216;
+$PREVIEW_WIDTH_MM   = 215;
 $PREVIEW_HEIGHT_MM  = 297;
 $PREVIEW_DPI        = 100;
 
