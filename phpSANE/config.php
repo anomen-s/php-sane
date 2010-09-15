@@ -223,7 +223,7 @@ $scan_ausgabe = $scan_name . "<br> &nbsp; &nbsp; &nbsp; Device = " . $scanner;
 
 // allowed resolutions
 
-$sane_cmd = $SCANIMAGE . " --help | grep -m 1 resolution";
+$sane_cmd = $SCANIMAGE . " -h | grep -m 1 resolution";
 $sane_result = `$sane_cmd`;
 unset($sane_cmd);
 
