@@ -53,6 +53,7 @@ echo "<table class='page_header' width='100%'>
 			<input type='image' name='lang_id' value='1' src='./bilder/en.gif' border='0'>
 			<input type='image' name='lang_id' value='2' src='./bilder/pl.gif' border='0'>
 			<input type='image' name='lang_id' value='3' src='./bilder/fi.gif' border='0'>
+			<input type='image' name='lang_id' value='4' src='./bilder/ru.gif' border='0'>
 		</td>
 		<td align='right'>
 			<img src='./bilder/logo.jpg' alt='phpSANE'>

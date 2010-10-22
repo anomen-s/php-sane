@@ -20,8 +20,10 @@ $save_type   = "link";                     //  link  /  popup
 // 0 = german
 // 1 = english
 // 2 = polish
+// 3 = finnish
+// 4 = russian
 
-$lang_id = 2;
+$lang_id = 1;
 
 
 // where to save all working files (scans...)
