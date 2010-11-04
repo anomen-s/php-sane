@@ -22,6 +22,7 @@ $save_type   = "link";                     //  link  /  popup
 // 2 = polish
 // 3 = finnish
 // 4 = russian
+// 5 = ukrainian
 
 $lang_id = 1;
 
