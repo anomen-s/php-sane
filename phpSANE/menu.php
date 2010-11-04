@@ -133,7 +133,7 @@ echo "
 			<SELECT name='mode' size='1'>
 				<option value='Color'  "; if ($mode=='Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
 				<option value='Gray'   "; if ($mode=='Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
-				<option value='Binary' "; if ($mode=='Binary') echo "selected"; echo ">".$lang[$lang_id][17]."
+				<option value='Lineart' "; if ($mode=='Lineart') echo "selected"; echo ">".$lang[$lang_id][17]."
 			</SELECT>
 		</td>\n";
 
