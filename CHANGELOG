@@ -65,3 +65,4 @@
 	- added russian translation
 	- added ukrainian translation
 	- fixed typo in lineart (monochrom) scan mode
+	- changed scanner detection routine to avoid webcams detected as scanners
