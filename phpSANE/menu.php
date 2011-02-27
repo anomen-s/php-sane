@@ -110,7 +110,11 @@ echo "
 			<SELECT name='format' size='1'>
 				<option value='jpg' "; if($format=="jpg") echo "selected"; echo ">".$lang[$lang_id][11]."
 				<option value='pnm' "; if($format=="pnm") echo "selected"; echo ">".$lang[$lang_id][12]."
-				<option value='tif' "; if($format=="tif") echo "selected"; echo ">".$lang[$lang_id][13]."
+				<option value='tif' "; if($format=="tif") echo "selected"; echo ">".$lang[$lang_id][13]; 
+if($do_pdf == 1) {
+	echo "				<option value='pdf' "; if($format=="pdf") echo "selected"; echo ">".$lang[$lang_id][43];
+}
+echo "
 			</SELECT>
 		</td>\n";
 

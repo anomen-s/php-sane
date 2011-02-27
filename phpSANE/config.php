@@ -5,10 +5,13 @@
 // =============
 
 $SCAN_HOME   = "/usr/bin/";
-$SCANIMAGE   = $SCAN_HOME . "scanimage";   //  auch mit
-$PNMTOJPEG   = $SCAN_HOME . "pnmtojpeg";   //  eigenen
-$PNMTOTIFF   = $SCAN_HOME . "pnmtotiff";   //  eigenen
-$OCR         = $SCAN_HOME . "gocr";        //  Parametern
+$MAGICK_HOME = "/usr/bin/";
+$SCANIMAGE   = $SCAN_HOME . "scanimage";   //  scanimage binary (sane)
+$PNMTOJPEG   = $SCAN_HOME . "pnmtojpeg";   //  netpbm conversion
+$PNMTOTIFF   = $SCAN_HOME . "pnmtotiff";   //  netpbm conversion
+$OCR         = $SCAN_HOME . "gocr";        //  optional ocr binary
+$CONVERT     = $MAGICK_HOME . "convert";   //  PDF Support
+$IDENTIFY    = $MAGICK_HOME . "identify";  //  Used to test for PDF support
 $file_output = "./output/";                //  destination directory for scanned files
 $save_type   = "link";                     //  link  /  popup
 
@@ -83,6 +86,9 @@ $do_usr_opt     = 1;
 
 $do_ocr = 0;
 if (`ls $OCR`) $do_ocr = 1;
+
+$do_pdf = 0;
+if (`ls $CONVERT` && `ls $IDENTIFY` && `$IDENTIFY -list Format | grep -i pdf`) $do_pdf = 1;
 
 
 // END CONFIG ----------------------------------------------------------
