@@ -199,7 +199,7 @@ $scanner_ok = false;
 if ($do_test_mode) {
 	$sane_result = "device `plustek:libusb:004:002' is a Plustek OpticPro U24 flatbed scanner";
 } else {
-	$sane_cmd = $SCANIMAGE . " --list-devices | grep scanner";
+	$sane_cmd = $SCANIMAGE . " --list-devices | grep -e '\(scanner\|hpaio\)'";
 	$sane_cmd;
 	$sane_result = exec($sane_cmd);
 	$sane_result;
