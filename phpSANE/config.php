@@ -15,6 +15,10 @@ $IDENTIFY    = $MAGICK_HOME . "identify";  //  Used to test for PDF support
 $file_output = "./output/";                //  destination directory for scanned files
 $save_type   = "link";                     //  link  /  popup
 
+// set up a string to be prepended to the scanimage command, so that
+// scanimage looks for devices at the ip making the request
+$SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
+
 
 // user config
 // ===========
@@ -199,7 +203,7 @@ $scanner_ok = false;
 if ($do_test_mode) {
 	$sane_result = "device `plustek:libusb:004:002' is a Plustek OpticPro U24 flatbed scanner";
 } else {
-	$sane_cmd = $SCANIMAGE . " --list-devices | grep -e '\(scanner\|hpaio\)'";
+	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep -e '\(scanner\|hpaio\)'";
 	$sane_cmd;
 	$sane_result = exec($sane_cmd);
 	$sane_result;
