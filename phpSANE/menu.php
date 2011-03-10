@@ -82,11 +82,11 @@ echo "
 echo "
 	<tr>
 		<td align='right'>
-		<select name='pagesize' size=1>
-			<option value='0,0' onclick='setPageSize(this.form)' selected>{$lang[$lang_id][40]}</option>";
+		<select name='pagesize' size=1 onchange='setPageSize(this.form)'>
+			<option value='0,0' selected>{$lang[$lang_id][40]}</option>";
 
 foreach ($PAGE_SIZE_LIST as $index => $page_values) {
-	echo "\n\t\t\t<option value='{$page_values[1]},{$page_values[2]}' onclick='setPageSize(this.form)'>{$page_values[0]}</option>";
+	echo "\n\t\t\t<option value='{$page_values[1]},{$page_values[2]}'>{$page_values[0]}</option>";
 }
 
 echo "
