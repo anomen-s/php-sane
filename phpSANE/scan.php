@@ -123,6 +123,11 @@ if ($error_input == 0)
 		if ($format == "tif") {
 			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > \"".$file_save."\"";
 		}
+
+		if ($format == "pdf") {
+			$cmd_device = $cmd_scan." | {$CONVERT} pnm:- -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
+		}
+
 	}
 
 	// ocr
