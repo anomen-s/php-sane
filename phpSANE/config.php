@@ -127,7 +127,7 @@ $geometry_x=0;
 $geometry_y=0;
 
 $format="jpg";
-$mode="Color";
+$mode="24bit Color";  // 24bit Color, True Gray, Black & White
 $resolution=150;
 
 $negative="no";

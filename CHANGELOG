@@ -67,3 +67,4 @@
 	- fixed typo in lineart (monochrom) scan mode
 	- changed scanner detection routine to avoid webcams detected as scanners
 	- added support for pdf output through imagemagick
+	- changed mode option to support scanimage 1.0.21+

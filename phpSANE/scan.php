@@ -43,7 +43,7 @@ if (($geometry_y >= 0) && ($geometry_y <= $PREVIEW_HEIGHT_MM)) {
 	scan_error($scan_ausgabe, $error_input, $lang_error);
 }
 
-$cmd_mode=" --mode=\"".$mode."\"";
+$cmd_mode=" --mode \"".$mode."\"";
 
 //$cmd_depth=" --depth ".$depth;
 
