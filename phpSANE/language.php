@@ -329,4 +329,57 @@ $lang[5] = array("Область сканування", // 0
 		 "PDF",                   // 43
 );
 
+////////////////////////////////////////////////////////////////////////
+
+// 6 = French
+
+//	é = &#233;
+//	ê = &#234;
+
+$lang[6] = array("Zone de num&#233risation",   // 0
+                "Gauche",                  // 1
+                "Haut",                    // 2
+                "Largeur",                 // 3
+                "Hauteur",                 // 4
+                "Haut gauche",             // 5
+                "Bas droite",              // 6
+                "Nouveau X",               // 7
+                "Nouveau Y",               // 8
+                "Option de num&#233risation",  // 9
+                "Format du fichier",       // 10
+                "JPG",                     // 11
+                "PNM",                     // 12
+                "TIFF",                    // 13
+                "Mode",                    // 14
+                "Couleur 24 bits",         // 15
+                "Nuance de gris",          // 16
+                "Monochrome",              // 17
+                "R&#233solution DPI",          // 18
+                "Couleur",                 // 19
+                "N&#233gatif",                 // 20
+                "Calibration du blanc",    // 21
+                "Luminosit&#233",              // 22
+                "Contraste",               // 23
+                "Pr&#233visualiser",           // 24
+                "RESET",                   // 25
+                "OCR",                     // 26
+                "Num&#233riser",               // 27
+                "Effacer",                 // 28
+                "Visualisation de la num&#233risation<br><br>Aucune s&#233lection<br>Aucun format de fichier<br>Aucune R&#233solution DPI", // 29
+                "Valeur maximal pour la num&#233risation<br><br>DIN-A4<br>Resolution DPI = 5 - 600",  // 30
+                "Appareil de num&#233risation",            // 31
+                "ERREUR",                              // 32
+                "Aucun scanners n'a &#233t&#233 identifi&#233.<br>Si vous vous attendiez à quelque chose de diff&#233rent, V&#233rifiez l'alimentation de votre scanner, Allumez ce dernier et utilisez l'utilitaire sane-find-scanner (le cas &#233cheant).<br>Vous &#234tes pri&#233s de vous reporter à la documentation fournis par ce logiciel (README, FAQ, manpages).",      // 33
+                "Veuillez r&#233essayer",                  // 34
+                "Clique-droite pour sauvegarder",      // 35
+                "CLOSE",                               // 36
+                "Aide",                                // 37
+                "Extra",                               // 38
+                "Aucune commande de num&#233risation",     // 39
+                "Format de Page",                      // 40
+                "Nom du fichier",                      // 41
+                "Fichier r&#233alis&#233",                     // 42
+                "PDF",                                 // 43
+);
+
 ?>

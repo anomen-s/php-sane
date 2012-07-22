@@ -30,6 +30,7 @@ $SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
 // 3 = finnish
 // 4 = russian
 // 5 = ukrainian
+// 6 = french
 
 $lang_id = 1;
 
