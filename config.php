@@ -4,8 +4,8 @@
 // system config
 // =============
 
-$SCAN_HOME   = "/usr/bin/";
-$MAGICK_HOME = "/usr/bin/";
+$SCAN_HOME   = "/usr/local/bin/";
+$MAGICK_HOME = "/usr/local/bin/";
 $SCANIMAGE   = $SCAN_HOME . "scanimage";   //  scanimage binary (sane)
 $PNMTOJPEG   = $SCAN_HOME . "pnmtojpeg";   //  netpbm conversion
 $PNMTOTIFF   = $SCAN_HOME . "pnmtotiff";   //  netpbm conversion
@@ -17,7 +17,8 @@ $save_type   = "link";                     //  link  /  popup
 
 // set up a string to be prepended to the scanimage command, so that
 // scanimage looks for devices at the ip making the request
-$SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
+//$SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
+$SCAN_NET_SETUP = '';
 
 
 // user config
@@ -32,7 +33,7 @@ $SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
 // 5 = ukrainian
 // 6 = french
 
-$lang_id = 1;
+$lang_id = 0;
 
 
 // where to save all working files (scans...)
@@ -128,7 +129,8 @@ $geometry_x=0;
 $geometry_y=0;
 
 $format="jpg";
-$mode="24bit Color";  // 24bit Color, True Gray, Black & White
+//$mode="24bit Color";  // 24bit Color, True Gray, Black & White
+$mode="Color";  // Lineart|Gray|Color
 $resolution=150;
 
 $negative="no";
@@ -204,7 +206,7 @@ $scanner_ok = false;
 if ($do_test_mode) {
 	$sane_result = "device `plustek:libusb:004:002' is a Plustek OpticPro U24 flatbed scanner";
 } else {
-	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep -e '\(scanner\|hpaio\)'";
+	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep -e '\(scanner\|hpaio\|multi-function\)'";
 	$sane_cmd;
 	$sane_result = exec($sane_cmd);
 	$sane_result;

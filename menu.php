@@ -135,9 +135,9 @@ echo "
 	<tr>
 		<td align='right'>".$lang[$lang_id][14]."&nbsp;
 			<SELECT name='mode' size='1'>
-				<option value='24bit Color'  "; if ($mode=='24bit Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
-				<option value='True Gray'   "; if ($mode=='True Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
-				<option value='Black & White' "; if ($mode=='Black & White') echo "selected"; echo ">".$lang[$lang_id][17]."
+				<option value='Color'  "; if ($mode=='Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
+				<option value='Gray'   "; if ($mode=='Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
+				<option value='Lineart' "; if ($mode=='Lineart') echo "selected"; echo ">".$lang[$lang_id][17]."
 			</SELECT>
 		</td>\n";
 
