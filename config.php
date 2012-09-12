@@ -128,10 +128,12 @@ $geometry_t=0;
 $geometry_x=0;
 $geometry_y=0;
 
-$format="jpg";
+//$format="jpg";
+$format="pdf";
 //$mode="24bit Color";  // 24bit Color, True Gray, Black & White
 $mode="Color";  // Lineart|Gray|Color
-$resolution=150;
+//$resolution=150;
+$resolution=300;
 
 $negative="no";
 $quality_cal= "no";
