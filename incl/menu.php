@@ -82,7 +82,7 @@ echo "
 echo "
 	<tr>
 		<td align='right'>
-		<select name='pagesize' size=1 onchange='setPageSize(this.form)'>
+		<select id='pagesite' name='pagesize' size=1 onchange='setPageSize(this.form)'>
 			<option value='0,0' selected>{$lang[$lang_id][40]}</option>";
 
 foreach ($PAGE_SIZE_LIST as $index => $page_values) {
@@ -94,7 +94,32 @@ echo "
 		</td>
 		<td>&nbsp;</td>
 	</tr>\n";
-
+?>
+<script language="javascript">
+window.onload = function ()
+{
+	elem = document.getElementById('pagesite');
+	if (document.menueForm.geometry_l.value == 0
+	 && document.menueForm.geometry_t.value == 0
+	 && document.menueForm.geometry_x.value == 0
+	 && document.menueForm.geometry_y.value == 0 )
+	{
+		options = elem.options;
+		console.log(options);
+		for(var i=0; i<=options.length; i++)
+		{
+			console.log(options[i]);
+			if (options[i].text == 'A4') {
+				options[i].selected = 'selected';
+				elem.onchange();
+				break;
+			}
+		}
+	}
+	paint_area();
+}
+</script>
+<?php
 
 ////////////////////////////////////////////////////////////////////////
 echo "
