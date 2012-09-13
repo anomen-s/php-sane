@@ -119,11 +119,33 @@ $first=0;
 
 if(isset($_POST['lang_id'])) { $lang_id=$_POST['lang_id']; }
 
+function strToHex($string)
+{
+    $hex='';
+    for ($i=0; $i < strlen($string); $i++)
+    {
+        //$hex .= dechex(ord($string[$i]));
+        $hex .= $string[$i].': '.dechex(ord($string[$i])).'<br/>';
+    }
+    return $hex;
+}
+
 $action="";
 if(isset($_POST['action'])) { $action=$_POST['action']; }
-if((ereg_replace("&#228;", "9", $lang[$lang_id][28])) == (ereg_replace("\xE4", "9", $action))) { $clean=1; $clear=1; }
-if((ereg_replace("&#252;", "9", $lang[$lang_id][25])) == (ereg_replace("\xFC", "9", $action))) $clear=1;
+$action_decoded = trim(preg_replace('/[^a-z0-9]/i', '', $action));
+$lang_25 = preg_replace('/&[^;]+;/', '', $lang[$lang_id][25]);
+$lang_28 = preg_replace('/&[^;]+;/', '', $lang[$lang_id][28]);
+if($lang_28 == $action_decoded) { $clean=1; $clear=1; }
+if($lang_25 == $action_decoded) $clear=1;
 
+/* 
+// Debug code
+echo '$action_decoded: <br/>'.strToHex($action_decoded).'<br/>';
+echo '$lang[$lang_id][25]: <br/>'.strToHex($lang_25).'<br/>';
+echo '$lang[$lang_id][28]: <br/>'.strToHex($lang_28).'<br/>';
+echo '$clean: '.$clean.'<br/>';
+echo '$clear: '.$clear.'<br/>';
+*/
 
 // default options
 
@@ -201,7 +223,7 @@ $TMP_PRAEFIX=$SAVE_PLACE."tmp/";   //  kein slach als abschluss und muss schreib
 
 $file_base=$TMP_PRAEFIX.$sid;
 
-$cleaner="rm -f ".$TMP_PRAEFIX."*";
+$cleaner="rm -f ".$TMP_PRAEFIX."* ".$SAVE_PLACE.$file_output.'*';
 
 
 // scale factor to map preview image -> scanner co-ords
