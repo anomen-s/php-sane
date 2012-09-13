@@ -75,6 +75,7 @@ function setPageSize(form) {
 
 	if ((page_x > 0) && (page_y > 0)) {
 		setGeometry(0, 0, page_x, page_y);
+		paint_area();
 	}
 
 	//document.menueForm.debug.value = form.pagesize[form.pagesize.selectedIndex].value;
