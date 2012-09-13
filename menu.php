@@ -134,12 +134,14 @@ echo "</tr>\n";
 echo "
 	<tr>
 		<td align='right'>".$lang[$lang_id][14]."&nbsp;
-			<SELECT name='mode' size='1'>
-				<option value='Color'  "; if ($mode=='Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
-				<option value='Gray'   "; if ($mode=='Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
-				<option value='Lineart' "; if ($mode=='Lineart') echo "selected"; echo ">".$lang[$lang_id][17]."
-			</SELECT>
+		".html_selectbox('mode',$mode_list,$mode)."
 		</td>\n";
+//			<SELECT name='mode' size='1'>
+//				<option value='Color'  "; if ($mode=='Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
+//				<option value='Gray'   "; if ($mode=='Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
+//				<option value='Lineart' "; if ($mode=='Lineart') echo "selected"; echo ">".$lang[$lang_id][17]."
+//			</SELECT>
+//		</td>\n";
 
 // jdw:
 if ($do_quality_cal) {

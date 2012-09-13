@@ -241,20 +241,40 @@ $scan_ausgabe = $scan_name . "<br> &nbsp; &nbsp; &nbsp; Device = " . $scanner;
 
 // allowed resolutions
 
-$sane_cmd = $SCANIMAGE . " -h -d$scanner | grep -m 1 resolution";
+$sane_cmd = $SCANIMAGE . " -h -d$scanner";
 $sane_result = `$sane_cmd`;
 unset($sane_cmd);
 
 if ($do_test_mode) {
-	$sane_result = "   --resolution 50..2450dpi [50]\n";
+	$sane_result = "   --resolution 50..2450dpi [50]\n   --mode auto|Color|Gray [Color]\n";
 }
 
-$start = strpos($sane_result, "n") + 2;
-$length = strpos($sane_result, "dpi") - $start;
-$list = "" . substr($sane_result, $start,$length) . "";
+$sane_result_arr = explode("\n", $sane_result);
+unset($sane_result);
+
+
+// Mode
+$sane_result_mode = preg_grep('/--mode /', $sane_result_arr);
+$sane_result_mode = end($sane_result_mode);
+
+#$modes = preg_replace('/^.*--mode.*([a-z\|-]*).*$/iU','$1', $sane_result_mode);
+$modes = preg_replace('/^.*--mode ([a-z|]*)[ \t].*$/iU','$1', $sane_result_mode);
+$mode_list = explode('|', $modes);
+unset($sane_result_mode);
+
+
+// Resolution
+$sane_result_reso = preg_grep('/--resolution /', $sane_result_arr);
+$sane_result_reso = end($sane_result_reso);
+
+$start = strpos($sane_result_reso, "n") + 2;
+$length = strpos($sane_result_reso, "dpi") - $start;
+$list = "" . substr($sane_result_reso, $start,$length) . "";
 unset($start);
 unset($length);
-unset($sane_result);
+unset($sane_result_reso);
+
+unset($sane_result_arr);
 
 // change "|" separated string $list into array of values
 // or generate a range of values.
