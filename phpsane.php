@@ -16,6 +16,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www
 // John Walsh <john.walsh@mini-net.co.uk>
 // Wojciech Bronisz <wojtek@bronisz.eu>
 
+include("incl/security.php");
 include("incl/functions.php");
 include("incl/language.php");
 include("incl/config.php");
