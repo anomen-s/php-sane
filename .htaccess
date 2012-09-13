@@ -1,0 +1,17 @@
+
+
+<Directory .git/>
+Order allow,deny
+Deny from all
+</Directory>
+
+<Directory doc/>
+Order allow,deny
+Deny from all
+</Directory>
+
+<Directory incl/>
+Order allow,deny
+Deny from all
+</Directory>
+

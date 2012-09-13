@@ -12,7 +12,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www
 <body>';
 
 
-include("language.php");
+include("incl/language.php");
 
 $file_save = $_GET['file_save'];
 $file_save_image = $_GET['file_save_image'];

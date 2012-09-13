@@ -16,10 +16,10 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www
 // John Walsh <john.walsh@mini-net.co.uk>
 // Wojciech Bronisz <wojtek@bronisz.eu>
 
-include("functions.php");
-include("language.php");
-include("config.php");
-include("scan.php");
+include("incl/functions.php");
+include("incl/language.php");
+include("incl/config.php");
+include("incl/scan.php");
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -95,7 +95,7 @@ echo "<tr>\n";
 echo "<td>\n";
 
 if ($scanner_ok) {
-	include("menu.php");
+	include("incl/menu.php");
 } else {
 	echo "
 	<input type=hidden name='geometry_l' value='".$geometry_l."'>
