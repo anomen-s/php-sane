@@ -53,6 +53,7 @@ $lang[0] = array("Scan-Bereich",       // 0
 		"Dateiname",           // 41
 		"Ausgabedatei",        // 42
 		"PDF",                 // 43
+		"Inhalt des Ausgabeverzeichnisses",                 // 44
 );
 
 ////////////////////////////////////////////////////////////////////////
@@ -103,6 +104,7 @@ $lang[1] = array("Scan Area",          // 0
 		"File name",           // 41
 		"Output file",         // 42
 		"PDF",                 // 43
+		"Contents of the output directory",                 // 44
 );
 
 ////////////////////////////////////////////////////////////////////////

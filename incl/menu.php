@@ -247,8 +247,25 @@ echo "
 	<tr>
 		<td colspan='2' align='center'>
 		<input type='button' value='".$lang[$lang_id][37]."' onclick=\"window.open('./help_{$lang_id}.php', 'help', '');\">
-	</tr>
-</table>\n";
+	</tr>\n";?>
 
+	<tr>
+		<th colspan='2'><?php echo $lang[$lang_id][44] ?></th>
+	</tr>
+	<tr>
+		<td colspan='2'>
+<?php
+$d = opendir($file_output);
+$links = array();
+while($entry = readdir($d)) {
+	if ($entry[0] == '.') continue;
+	$links[] = '<a href="'.$file_output.$entry.'">'.$entry.'</a>';
+}
+echo implode('<br/>', $links);
 ?>
+		</td>
+	</tr>
+</table>
+
+
 
