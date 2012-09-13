@@ -16,39 +16,39 @@ $lang[0] = array("Scan-Bereich",       // 0
 		"H&#246;he",           // 4
 		"Obere linke Ecke",    // 5
 		"Untere rechte Ecke",  // 6
-		"Neu X",               // 7
-		"Neu Y",               // 8
-		"Scan-Wahlen",         // 9
-		"Datei Format",        // 10
+		"X-Koordinate",        // 7
+		"Y-Koordinate",        // 8
+		"Scan-Optionen",       // 9
+		"Dateiformat",         // 10
 		"JPG",                 // 11
 		"PNM",                 // 12
 		"TIFF",                // 13
-		"Mode",                // 14
-		"24 Bitfarbe",         // 15
-		"Graue Skala",         // 16
-		"Einfarbig",           // 17
-		"Aufl&#246;sung DPI",  // 18
+		"Modus",               // 14
+		"Farbe (24 Bit)",      // 15
+		"Graustufen",          // 16
+		"Einf&auml;rbig (Schwarz/Wei&#223;)",      // 17
+		"Aufl&#246;sung in DPI",  // 18
 		"Farbtiefe",           // 19
 		"Negativ",             // 20
-		"Wei&#223; Abgleich",  // 21
-		"Heligkeit",           // 22
+		"Wei&#223;abgleich",   // 21
+		"Helligkeit",          // 22
 		"Kontrast",            // 23
 		"Vorschau",            // 24
 		"Zur&#252;cksetzen",   // 25
 		"OCR",                 // 26
 		"Scannen",             // 27
 		"Aufr&#228;umen",      // 28
-		"Beim Vorschau Scan<br><br>Keine Auswahl<br>Kein Datei Format<br>Keine Aufl&#246;sung DPI",  // 29
-		"Maximal werte beim Scannen<br><br>DIN-A4<br>Aufl&#246;sung DPI = 5 - 600",  // 30
-		"Scanner Device",      // 31
+		"Vorschau-Scan<br/><br/>Keine Auswahl<br/>Kein Dateiformat<br/>Keine Aufl&#246;sung DPI",  // 29
+		"Maximalwerte beim Scannen<br/><br/>DIN-A4<br/>Aufl&#246;sung von 5 bis 600 DPI",  // 30
+		"Scanner",             // 31
 		"FEHLER",              // 32
-		"Scanner Besetzt !!!!!!<br>Noch einmal Probieren?<br><br>Kein Scanner gefunden.<br>Ist der Scanner frei?.<br>&#220;berpr&#252;fen ob der Scanner angeschlossen, an ist und  vom scanimage -L Programm gefunden wird.", // 33
-		"Versuchen Noch Einmal", // 34
-		"Zum Speichern Rechter Mausklick", // 35
-		"SCHLIE&#223;EN",      // 36
+		"Scanner besetzt!<br>Nochmals probieren?<br><br>Kein Scanner gefunden.<br>Ist der Scanner frei?<br>&#220;berpr&#252;fen Sie, ob der Scanner angeschlossen ist, und vom Programm <tt>scanimage -L</tt> gefunden wird.", // 33
+		"weiteren Versuch starten", // 34
+		"Zum Speichern rechtsklicken und \"Speichern unter\" ausw&auml;hlen", // 35
+		"Schlie&#223;en",      // 36
 		"Hilfe",               // 37
-		"Extra",               // 38
-		"kein Abtastbefehl",   // 39
+		"Zus&auml;tzliche Kommandozeilenoptionen",               // 38
+		"kein Scan-Befehl &uuml;bermittelt",   // 39
 		"Seitengr&#246;&#223;e", // 40
 		"Dateiname",           // 41
 		"Ausgabedatei",        // 42
