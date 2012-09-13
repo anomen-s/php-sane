@@ -4,8 +4,16 @@
 // system config
 // =============
 
-$SCAN_HOME   = "/usr/local/bin/";
-$MAGICK_HOME = "/usr/local/bin/";
+switch(php_uname('s')){
+	case 'FreeBSD':
+		$SCAN_HOME   = "/usr/local/bin/";
+		$MAGICK_HOME = "/usr/local/bin/";
+		break;
+	default:
+		$SCAN_HOME   = "/usr/bin/";
+		$MAGICK_HOME = "/usr/bin/";
+		break;
+}
 $SCANIMAGE   = $SCAN_HOME . "scanimage";   //  scanimage binary (sane)
 $PNMTOJPEG   = $SCAN_HOME . "pnmtojpeg";   //  netpbm conversion
 $PNMTOTIFF   = $SCAN_HOME . "pnmtotiff";   //  netpbm conversion
