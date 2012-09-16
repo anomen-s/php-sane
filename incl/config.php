@@ -41,7 +41,7 @@ $SCAN_NET_SETUP = '';
 // 5 = ukrainian
 // 6 = french
 
-$lang_id = 0;
+$lang_id = 1;
 
 
 // where to save all working files (scans...)
