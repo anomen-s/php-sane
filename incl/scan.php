@@ -125,7 +125,13 @@ if ($error_input == 0)
 		}
 
 		if ($format == "pdf") {
-			$cmd_device = $cmd_scan." | {$CONVERT} pnm:- -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
+			//$cmd_device = $cmd_scan." | {$CONVERT} pnm:- -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
+			/*
+				Bugfix:
+				convert: unable to read image data `-' @ error/pnm.c/ReadPNMImage/766.
+				convert: no images defined `pdf:-' @ error/convert.c/ConvertImageCommand/3044.
+			*/
+			$cmd_device = $cmd_scan." | {$CONVERT} - -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
 		}
 
 	}
