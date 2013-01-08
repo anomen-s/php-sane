@@ -333,55 +333,57 @@ $lang[5] = array("Область сканування", // 0
 
 ////////////////////////////////////////////////////////////////////////
 
-// 6 = French
+// 6 = français (french)
 
-//	é = &#233;
-//	ê = &#234;
+/*
+é = &#233;
+à = &#224;
+*/
 
-$lang[6] = array("Zone de num&#233risation",   // 0
-                "Gauche",                  // 1
-                "Haut",                    // 2
-                "Largeur",                 // 3
-                "Hauteur",                 // 4
-                "Haut gauche",             // 5
-                "Bas droite",              // 6
-                "Nouveau X",               // 7
-                "Nouveau Y",               // 8
-                "Option de num&#233risation",  // 9
-                "Format du fichier",       // 10
-                "JPG",                     // 11
-                "PNM",                     // 12
-                "TIFF",                    // 13
-                "Mode",                    // 14
-                "Couleur 24 bits",         // 15
-                "Nuance de gris",          // 16
-                "Monochrome",              // 17
-                "R&#233solution DPI",          // 18
-                "Couleur",                 // 19
-                "N&#233gatif",                 // 20
-                "Calibration du blanc",    // 21
-                "Luminosit&#233",              // 22
-                "Contraste",               // 23
-                "Pr&#233visualiser",           // 24
-                "RESET",                   // 25
-                "OCR",                     // 26
-                "Num&#233riser",               // 27
-                "Effacer",                 // 28
-                "Visualisation de la num&#233risation<br><br>Aucune s&#233lection<br>Aucun format de fichier<br>Aucune R&#233solution DPI", // 29
-                "Valeur maximal pour la num&#233risation<br><br>DIN-A4<br>Resolution DPI = 5 - 600",  // 30
-                "Appareil de num&#233risation",            // 31
-                "ERREUR",                              // 32
-                "Aucun scanners n'a &#233t&#233 identifi&#233.<br>Si vous vous attendiez à quelque chose de diff&#233rent, V&#233rifiez l'alimentation de votre scanner, Allumez ce dernier et utilisez l'utilitaire sane-find-scanner (le cas &#233cheant).<br>Vous &#234tes pri&#233s de vous reporter à la documentation fournis par ce logiciel (README, FAQ, manpages).",      // 33
-                "Veuillez r&#233essayer",                  // 34
-                "Clique-droite pour sauvegarder",      // 35
-                "CLOSE",                               // 36
-                "Aide",                                // 37
-                "Extra",                               // 38
-                "Aucune commande de num&#233risation",     // 39
-                "Format de Page",                      // 40
-                "Nom du fichier",                      // 41
-                "Fichier r&#233alis&#233",                     // 42
-                "PDF",                                 // 43
+$lang[6] = array("Aire de num&#233;risation",          // 0
+		"Gauche",                // 1
+		"Haut",                 // 2
+		"Largeur",               // 3
+		"Hauteur",              // 4
+		"Haut gauche",            // 5
+		"Bas droit",        // 6
+		"Nouvel X",               // 7
+		"Nouvel Y",               // 8
+		"Options de num&#233;risation",        // 9
+		"Format du fichier",         // 10
+		"JPG",                 // 11
+		"PNM",                 // 12
+		"TIFF",                // 13
+		"Mode",                // 14
+		"24 bit Couleur",        // 15
+		"Nuanges de gris",           // 16
+		"Monochrome",          // 17
+		"R&#233;solution DPI",      // 18
+		"Couleur",               // 19
+		"N&#233;gatif",            // 20
+		"Calibration du blanc",   // 21
+		"Luminosit&#233;",          // 22
+		"Contraste",            // 23
+		"Pr&#233;visualiser",             // 24
+		"Recharger",               // 25
+		"ROC",                 // 26
+		"Num&#233;riser",                // 27
+		"R&#233;initialiser",               // 28
+		"Pr&#233;visualisation<br><br>Sans S&#233;lection<br>Sans Format de Fichier<br>Sans R&#233;solution DPI", // 29
+		"Valeur Max Scan<br><br>DIN-A4<br>R&#233;solution DPI = 5 - 600",  // 30
+		"Scanner",      // 31
+		"ERREUR",               // 32
+		"Aucun scanner n'a &#233;t&#233; identifi&#233;.<br>Si vous vous attendiez &#224; autre chose, v&#233;rifiez que le scanner est branch&#233;, allum&#233; et d&#233;tect&#233; par sane-find-scanner.<br>Reportez-vous &#224; la documentation de ce logiciel (README, FAQ, manpages).",      // 33
+		"R&#233;essayer",           // 34
+		"Cliquer-droit pour sauvegarderRight", // 35
+		"FERMER",               // 36
+		"Aide",                // 37
+		"Extra",               // 38
+		"aucune commande de num&#233;risation",     // 39
+		"Taille de la page",           // 40
+		"Nom du fichier",           // 41
+		"Fichier cr&#233;&#233;",         // 42
+		"PDF",                 // 43
 );
 
 ?>
