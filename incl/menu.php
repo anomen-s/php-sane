@@ -1,271 +1,157 @@
 <?php
-
-echo "
-<table class='tab_menu'>
-	<col width='50%'>
-	<col width='50%'>";
-
-////////////////////////////////////////////////////////////////////////
-if (($file_save !== '')&&($save_type=='link')) {
-	echo "
+echo "<table id='tab_menu_settings'>
 	<tr>
-		<th align='left'>".$lang[$lang_id][31]."</th>
-		<th colspan='2'>".$lang[$lang_id][42].": </th>
+		<th colspan='3'>".$lang[$lang_id][21]."</th>
 	</tr>
 	<tr>
-	<td align='left'> &nbsp; &nbsp; &nbsp;".$scan_ausgabe."</td>
-	<td align='left'> &nbsp; &nbsp; &nbsp; <a href='".$file_save."' target='_blank'>".str_replace($file_output,"",$file_save)."</a></td>
-	</tr>";
-} else {
-	echo "
-	<tr>
-		<th align='left'>".$lang[$lang_id][31]."</th>
+		<td id='scanner_name' colspan='3'>".$scan_output."</td>
 	</tr>
 	<tr>
-		<td align='left'> &nbsp; &nbsp; &nbsp;".$scan_ausgabe."</td>
-	</tr>";
-}
-
-
-////////////////////////////////////////////////////////////////////////
-if (0) {
-	echo "
-	<tr>
-		<td align='left'>1</td>
-		<td align='left'>2</td>
-		<td align='left'>3</td>
-		<td align='left'>4</td>
-	</tr>";
-}
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<th colspan='2'>".$lang[$lang_id][0]."</th>
-	</tr>";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<td align='right'>".$lang[$lang_id][1]."&nbsp;<INPUT type='text' name='geometry_l' id='pozL' value='".$geometry_l."' size='4' maxlength='3'>&nbsp;mm</td>
-		<td align='right'><font id='ecke_rot1' class='ecke_rot1'>".$lang[$lang_id][5]."</font>&nbsp;<INPUT type='radio' name='ecke' value='lo' checked></td>
-	</tr>";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-	<td align='right'>".$lang[$lang_id][2]."&nbsp;<INPUT type='text' name='geometry_t' id='pozT' value='".$geometry_t."' size='4' maxlength='3'>&nbsp;mm</td>
-	<td align='right'><font id='ecke_rot2'>".$lang[$lang_id][6]."</font>&nbsp;<INPUT type='radio' name='ecke' value='ru'></td>
-	</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<td align='right'>".$lang[$lang_id][3]."&nbsp;<INPUT type='text' name='geometry_x' id='geometry_x' value='".$geometry_x."' size='4' maxlength='3' >&nbsp;mm</td>
-		<td align='right'>".$lang[$lang_id][7]."&nbsp;<INPUT type='text' name='PosX' value='0' size='4'></td>
-	</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<td align='right'>".$lang[$lang_id][4]."&nbsp;<INPUT type='text' name='geometry_y' id='geometry_y' value='".$geometry_y."' size='4' maxlength='3'>&nbsp;mm</td>
-		<td align='right'>".$lang[$lang_id][8]."&nbsp;<INPUT type='text' name='PosY' value='0' size='4'></td>
-	</tr>\n";
-
-////////////////////////////////////////////////////////////////////////
-
-echo "
-	<tr>
-		<td align='right'>
-		<select id='pagesite' name='pagesize' size=1 onchange='setPageSize(this.form)'>
-			<option value='0,0' selected>{$lang[$lang_id][40]}</option>";
-
+		<th colspan='3'>".$lang[$lang_id][0]."</th>
+	</tr>
+  <tr>
+    <td>".$lang[$lang_id][40]."</td>
+		<td class='value_column'>
+      <select id='pagesize' name='pagesize' size=1>
+        <option value='0,0' data-image='images/pagesize_custom.png'>{$lang[$lang_id][57]}</option>";
 foreach ($PAGE_SIZE_LIST as $index => $page_values) {
-	echo "\n\t\t\t<option value='{$page_values[1]},{$page_values[2]}'>{$page_values[0]}</option>";
+  $pagesize_string = ($page_values[1].",".$page_values[2]);
+  echo "<option value='" . $pagesize_string . "'";
+  if ((isset($_POST['pagesize']) && ($_POST['pagesize'] == $pagesize_string)) || (!isset($_POST['pagesize']) && ($page_values[0] == $DEFAULT_PAGE_SIZE))) echo " selected";
+  echo " data-image='images/pagesize_" . strtolower($page_values[0]) . ".png'>{$page_values[0]}</option>";
 }
-
-echo "
-		</select>
+  echo "
+      </select>
 		</td>
-		<td>&nbsp;</td>
-	</tr>\n";
-?>
-<script language="javascript">
-window.onload = function ()
-{
-	elem = document.getElementById('pagesite');
-	if (document.menueForm.geometry_l.value == 0
-	 && document.menueForm.geometry_t.value == 0
-	 && document.menueForm.geometry_x.value == 0
-	 && document.menueForm.geometry_y.value == 0 )
-	{
-		options = elem.options;
-		console.log(options);
-		for(var i=0; i<=options.length; i++)
-		{
-			console.log(options[i]);
-			if (options[i].text == 'A4') {
-				options[i].selected = 'selected';
-				elem.onchange();
-				break;
-			}
-		}
-	}
-	paint_area();
-}
-</script>
-<?php
-
-////////////////////////////////////////////////////////////////////////
-echo "
+    <td class='unit_column'></td>
+	</tr>
 	<tr>
-		<th colspan='2'>".$lang[$lang_id][9]."</th>
-	</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
+    <td>".$lang[$lang_id][1]."</td>
+		<td class='value_column'><input type='text' name='pos_x' id='pos_x' value='".$pos_x."' size='4' maxlength='3'></td>
+    <td class='unit_column'>{$lang[$lang_id][5]}</td>
+	</tr>
 	<tr>
-		<td align='right'>".$lang[$lang_id][10]."&nbsp;
-			<SELECT name='format' size='1'>
-				<option value='jpg' "; if($format=="jpg") echo "selected"; echo ">".$lang[$lang_id][11]."
-				<option value='pnm' "; if($format=="pnm") echo "selected"; echo ">".$lang[$lang_id][12]."
-				<option value='tif' "; if($format=="tif") echo "selected"; echo ">".$lang[$lang_id][13]; 
-if($do_pdf == 1) {
-	echo "				<option value='pdf' "; if($format=="pdf") echo "selected"; echo ">".$lang[$lang_id][43];
+    <td>".$lang[$lang_id][2]."</td>
+	  <td class='value_column'><input type='text' name='pos_y' id='pos_y' value='".$pos_y."' size='4' maxlength='3'></td>
+    <td class='unit_column'>{$lang[$lang_id][5]}</td>
+	</tr>
+	<tr>
+		<td>".$lang[$lang_id][3]."</td>
+    <td class='value_column'><input type='text' name='geometry_x' id='geometry_x' value='".$geometry_x."' size='4' maxlength='3'></td>
+    <td class='unit_column'>{$lang[$lang_id][5]}</td>
+	</tr>
+	<tr>
+		<td>".$lang[$lang_id][4]."</td>
+    <td class='value_column'><input type='text' name='geometry_y' id='geometry_y' value='".$geometry_y."' size='4' maxlength='3'></td>
+    <td class='unit_column'>{$lang[$lang_id][5]}</td>
+	</tr>
+	<tr>
+		<th colspan='3'>".$lang[$lang_id][9]."</th>
+	</tr>
+  <tr>
+    <td>".$lang[$lang_id][10]."</td>
+		<td class='value_column'>
+			<select name='format'>\n";
+if($do_format_jpg) { echo "<option "; if($format=="jpg") echo "selected "; echo "value='jpg' data-image='images/filetype_jpg.png'>".$lang[$lang_id][44]."</option>\n"; }
+if($do_format_pnm) { echo "<option "; if($format=="pnm") echo "selected "; echo "value='pnm' data-image='images/filetype_pnm.png'>".$lang[$lang_id][45]."</option>\n"; }
+if($do_format_tif) { echo "<option "; if($format=="tif") echo "selected "; echo "value='tif' data-image='images/filetype_tif.png'>".$lang[$lang_id][46]."</option>\n"; }
+if($do_format_png) { echo "<option "; if($format=="png") echo "selected "; echo "value='png' data-image='images/filetype_png.png'>".$lang[$lang_id][48]."</option>\n"; }
+if($do_format_bmp) { echo "<option "; if($format=="bmp") echo "selected "; echo "value='bmp' data-image='images/filetype_bmp.png'>".$lang[$lang_id][47]."</option>\n"; }
+if($do_format_pdf) { echo "<option "; if($format=="pdf") echo "selected "; echo "value='pdf' data-image='images/filetype_pdf.png'>".$lang[$lang_id][43]."</option>\n"; }
+if($do_format_txt) { echo "<option "; if($format=="txt") echo "selected "; echo "value='txt' data-image='images/filetype_txt.png'>".$lang[$lang_id][49]."</option>\n"; }
+echo "</select>
+		</td>
+    <td class='unit_column'></td>
+  </tr>
+	<tr>
+    <td>".$lang[$lang_id][14]."</td>
+    <td class='value_column'>		
+      <select name='mode'>\n";
+$mode_color_index = array_search('color', array_map('strtolower', $mode_list));;
+if($mode_color_index !== false) {
+  echo "<option"; if(strcasecmp($mode, 'color') == 0) echo " selected"; echo " value='{$mode_list[$mode_color_index]}' data-image='images/mode_color.png'>" . $lang[$lang_id][15]."</option>";
+}
+$mode_gray_index = array_search('gray', array_map('strtolower', $mode_list));
+if($mode_gray_index !== false) {
+  echo "<option"; if(strcasecmp($mode, 'gray') == 0) echo " selected"; echo " value='{$mode_list[$mode_gray_index]}' data-image='images/mode_gray.png'>" . $lang[$lang_id][16]."</option>";
+}
+$mode_lineart_index = array_search('lineart', array_map('strtolower', $mode_list));
+if($mode_lineart_index !== false) {
+  echo "<option"; if(strcasecmp($mode, 'lineart') == 0) echo " selected"; echo " value='{$mode_list[$mode_lineart_index]}' data-image='images/mode_lineart.png'>" . $lang[$lang_id][17]."</option>";
 }
 echo "
-			</SELECT>
-		</td>\n";
-
-
-//jdw:
-if ($do_negative) {
-	$checked="";
-	if($negative=="yes") $checked="checked";
-		echo "<td align='right'>".$lang[$lang_id][20]."&nbsp;<INPUT type='checkbox' name='negative' value='yes' ".$checked."></td>\n";
-} else {
-	echo "<td>&nbsp;</td>\n";
-}
-echo "</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
+	    </select>
+    </td>
+    <td class='unit_column'></td>
+  </tr>
 	<tr>
-		<td align='right'>".$lang[$lang_id][14]."&nbsp;
-		".html_selectbox('mode',$mode_list,$mode)."
-		</td>\n";
-//			<SELECT name='mode' size='1'>
-//				<option value='Color'  "; if ($mode=='Color')  echo "selected"; echo ">".$lang[$lang_id][15]."
-//				<option value='Gray'   "; if ($mode=='Gray')   echo "selected"; echo ">".$lang[$lang_id][16]."
-//				<option value='Lineart' "; if ($mode=='Lineart') echo "selected"; echo ">".$lang[$lang_id][17]."
-//			</SELECT>
-//		</td>\n";
+    <td>".$lang[$lang_id][18]."</td>
+		<td class='value_column'>\n".html_selectbox('resolution', $resolution_list, $resolution)."</td>
+    <td class='unit_column'>{$lang[$lang_id][6]}</td>
+  </tr>";
 
-// jdw:
-if ($do_quality_cal) {
-	$checked1="";
-	if($quality_cal=="yes") $checked1="checked";
-		echo "<td align='right'>".$lang[$lang_id][21]."&nbsp;<INPUT type='checkbox' name='quality_cal' value='yes' ".$checked1."></td>\n";
-} else {
-	echo "<td>&nbsp;</td>\n";
-}
-echo "</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<td align='right'>".$lang[$lang_id][18]."&nbsp;
-		".html_selectbox('resolution',$resolution_list,$resolution)."
-		</td>\n";
-
-// jdw:
 if ($do_brightness) {
-	echo "\t\t<td align='right'>".$lang[$lang_id][22]."&nbsp;<INPUT type='text' value='".$brightness."' name='brightness' size='5' maxlength='5'></td>\n";
-} else {
-	echo "\t\t<td>&nbsp;</td>\n";
+	echo "
+  <tr>
+    <td>".$lang[$lang_id][22]."</td>
+    <td class='value_column'>
+      <div id='brightness_slider' class='noUiSlider'></div>
+      <input id='brightness' type='text' value='".$brightness."' name='brightness' maxlength='4'>
+    </td>
+    <td class='unit_column'>{$lang[$lang_id][7]}</td>
+  </tr>";
 }
-echo "\t</tr>\n";
 
+if ($do_contrast) {
+	echo "
+  <tr>
+    <td>".$lang[$lang_id][23]."</td>
+    <td class='value_column'>
+      <div id='contrast_slider' class='noUiSlider'></div>
+      <input id='contrast' type='text' value='".$contrast."' name='contrast' maxlength='3'>
+    </td>
+    <td class='unit_column'>{$lang[$lang_id][7]}</td>
+  </tr>";
+}
 
-////////////////////////////////////////////////////////////////////////
-// jdw:
 if ($do_usr_opt) {
 echo "
 	<tr>
-		<td colspan='2' align='center'>".$lang[$lang_id][38]."&nbsp;<INPUT type='text' value='".$usr_opt."' name='usr_opt' size='40'></td>
-	</tr>\n";
+		<td>".$lang[$lang_id][38]."</td>
+    <td class='value_column'><input type='text' value='".$usr_opt."' name='usr_opt' size='40'></td>
+    <td class='unit_column'></td>
+	</tr>";
 }
 
-if (isset($_POST['nazwa'])) {
-	$plik_nazwa=$_POST['nazwa'];
-} else {
-	$plik_nazwa=time();
-}
-echo "
+if($do_file_name) {
+  $filename = ($file_name_prefix !== -1 ? $file_name_prefix : $lang[$lang_id][60]) . date("Y-m-d H.i.s", time());
+  echo "
 	<tr>
-		<td colspan='2' align='center'>".$lang[$lang_id][41]."&nbsp;<INPUT type='text' value='".$plik_nazwa."' name='nazwa' size='40'></td>
-	</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-echo "
-	<tr>
-		<td colspan='2' align='center' style='white-space: normal;'>
-		<INPUT type='submit' name='action' value='".$lang[$lang_id][24]."'> &nbsp;
-		<INPUT type='submit' name='action' value='".$lang[$lang_id][27]."'>\n";
-if ($do_ocr) {
-	echo "&nbsp;
-		<INPUT type='submit' name='action' value='".$lang[$lang_id][26]."'>\n";
-}
-echo "&nbsp;
-		<span style='white-space: nowrap;'>
-			<INPUT type='submit' name='action' value=' ".$lang[$lang_id][25]."'> &nbsp;
-			<INPUT type='submit' name='action' value='".$lang[$lang_id][28]."'>
-		</span>
-		</td>
-	</tr>\n";
-
-
-////////////////////////////////////////////////////////////////////////
-if (1) {
-echo "
-	<tr>
-		<td colspan='2'><IMG src='./bilder/clear.gif' width='1' style='height: 0.0em;' align='middle' border='0'></td>
-	</tr>\n";
+    <td>".$lang[$lang_id][41]."</td>
+	  <td class='value_column'><input type='text' value='$filename' name='file_name' size='40'></td>
+    <!--<td class='value_column'><input type='text' value='".$lang[$lang_id][60]." ".date("Y-m-d H.i.s",time())."' name='file_name' size='40'></td>-->
+    <td class='unit_column'></td>
+	</tr>";
 }
 
+if($do_btn_reset || $do_btn_clean) {
+echo "
+    <tr>
+      <td colspan='2'>";
+        if ($do_btn_reset) echo "<input type='submit' name='action_reset' value='".$lang[$lang_id][25]."'>";
+        if ($do_btn_clean) echo "<input type='submit' name='action_clean' value='".$lang[$lang_id][26]."'>";
+      echo "
+      </td>
+      <td class='unit_column'></td>
+    </tr>";
+}
 
 echo "
-	<tr>
-		<td colspan='2' align='center'>
-		<input type='button' value='".$lang[$lang_id][37]."' onclick=\"window.open('./help_{$lang_id}.php', 'help', '');\">
-	</tr>\n";?>
-
-	<tr>
-		<th colspan='2'><?php echo $lang[$lang_id][44] ?></th>
-	</tr>
-	<tr>
-		<td colspan='2'>
-<?php
-$d = opendir($file_output);
-$links = array();
-while($entry = readdir($d)) {
-	if ($entry[0] == '.') continue;
-	$links[] = '<a href="'.$file_output.$entry.'">'.$entry.'</a>';
-}
-echo implode('<br/>', $links);
-?>
-		</td>
-	</tr>
-</table>
-
-
-
+    <tr>
+      <td id='tab_menu_buttons' colspan='2'>
+        <input id='tab_menu_buttons_preview' type='submit' name='action_preview' value='".$lang[$lang_id][24]."'><input id='tab_menu_buttons_accept' type='submit' name='action_save' value='".$lang[$lang_id][42]."'>
+      </td>
+      <td class='unit_column'></td>
+    </tr>
+  </table>\n";
+  
