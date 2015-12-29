@@ -24,6 +24,7 @@ $SCAN_NET_SETUP = '';
 // 5 = ukrainian
 // 6 = french
 // 7 = dutch
+// 8 = czech
 $lang_id = 1;
 
 
