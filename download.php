@@ -42,7 +42,8 @@
     if(count($valid_files)) {
       //create the archive
       $zip = new ZipArchive();
-      if($zip->open($destination,$overwrite ? ZIPARCHIVE::OVERWRITE : ZIPARCHIVE::CREATE) !== true) {
+      $option = $overwrite && file_exists($destination) ? ZIPARCHIVE::OVERWRITE : ZIPARCHIVE::CREATE;
+      if($zip->open($destination,$option) !== true) {
         return false;
       }
 
