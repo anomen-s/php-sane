@@ -35,7 +35,7 @@ function validate($value, $constraint, $regex='') {
 
 function valid_or_dead($key, $constraint, $regex='') {
 	foreach(array($_GET, $_POST, $_SERVER) as $_arr) {
-		if (!array_key_exists($key, $_arr)) {
+		if (!array_key_exists($key, is_null($_arr) ? [] : $_arr)) {
 			continue;
 		}
 		$value = $_arr[$key];
