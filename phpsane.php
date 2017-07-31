@@ -1,6 +1,6 @@
 <?php 
   // phpSANE
-  // Version: 0.6.0
+  // Version: 0.8.1
   // John Walsh <john.walsh@mini-net.co.uk>
   // Wojciech Bronisz <wojtek@bronisz.eu>
   include("incl/functions.php");
