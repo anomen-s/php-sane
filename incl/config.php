@@ -101,7 +101,7 @@ $do_format_pdf = true;
 // =============
 $SCANIMAGE = "/usr/bin/scanimage"; //scanimage binary (sane)
 $GOCR      = "/usr/bin/gocr";      //optional ocr binary
-$PDFUNITE  = "/usr/local/bin/pdfunite"; //optional PDF merge binary
+$PDFUNITE  = "/usr/bin/pdfunite"; //optional PDF merge binary
 $PNMTOJPEG = "/usr/bin/pnmtojpeg"; //netpbm pnm to jpeg conversion binary
 $PNMTOTIFF = "/usr/bin/pnmtotiff"; //netpbm pnm to tiff conversion binary
 $PNMTOBMP  = "/usr/bin/ppmtobmp";  //netpbm ppm to bmp conversion binary
