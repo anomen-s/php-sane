@@ -30,6 +30,17 @@ function sanitize_path($url) {
 	return preg_replace ($find, $repl, $url);
 }
 
+function find_binary($bin, $paths = []) {
+ $defaultpaths = array('/usr/local/bin','/usr/bin', '/opt/bin');
+ foreach (array_merge($defaultpaths, $paths) as $p) {
+   $f = $p . '/' . $bin;
+   if (is_executable($f) {
+      return $f;
+   }
+ }
+ return NULL;
+}
+
 function get_config_path($scanner_name) {
   global $scanner_dir;
   return $scanner_dir.(sanitize_path($scanner_name)).".ini";

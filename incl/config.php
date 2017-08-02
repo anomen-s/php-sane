@@ -99,42 +99,19 @@ $do_format_pdf = true;
 
 // system config
 // =============
-$SCANIMAGE = "/usr/bin/scanimage"; //scanimage binary (sane)
-$GOCR      = "/usr/bin/gocr";      //optional ocr binary
-$PDFUNITE  = "/usr/bin/pdfunite"; //optional PDF merge binary
-$PNMTOJPEG = "/usr/bin/pnmtojpeg"; //netpbm pnm to jpeg conversion binary
-$PNMTOTIFF = "/usr/bin/pnmtotiff"; //netpbm pnm to tiff conversion binary
-$PNMTOBMP  = "/usr/bin/ppmtobmp";  //netpbm ppm to bmp conversion binary
-$PNMTOPNG  = "/usr/bin/pnmtopng";  //netpbm pnm to png conversion binary
-$CONVERT   = "/usr/bin/convert";   //ImageMagick convert binary
-$IDENTIFY  = "/usr/bin/identify";  //ImageMagick binary used to test for PDF support
-if(php_uname('s') == 'FreeBSD') {
-  //FreeBSD
-  $SCANIMAGE = "/usr/local/bin/scanimage";
-  $GOCR      = "/usr/local/bin/gocr";
-  $PDFUNITE  = "/usr/local/bin/pdfunite";
-  $PNMTOJPEG = "/usr/bin/pnmtojpeg";
-  $PNMTOTIFF = "/usr/local/bin/pnmtotiff";
-  $PNMTOBMP  = "/usr/local/bin/ppmtobmp";
-  $PNMTOPNG  = "/usr/local/bin/pnmtopng";
-  $CONVERT   = "/usr/local/bin/convert";
-  $IDENTIFY  = "/usr/local/bin/identify";
-}
-else if(stripos(exec('uname -a'), 'synology') !== FALSE) {
-  //Synology Disk Station
-  $SCANIMAGE = "/opt/bin/scanimage";
-  $GOCR      = "/opt/bin/gocr";
-  $PDFUNITE  = "/usr/local/bin/pdfunite";
-  $PNMTOJPEG = "/usr/local/netpbm/bin/pnmtojpeg";
-  $PNMTOTIFF = "/usr/local/netpbm/bin/pnmtotiff";
-  $PNMTOBMP  = "/usr/local/netpbm/bin/ppmtobmp";
-  $PNMTOPNG  = "/usr/local/netpbm/bin/pnmtopng";
-  $CONVERT   = "/opt/bin/convert";
-  $IDENTIFY  = "/opt/bin/identify";
-}
-if(!`ls $GOCR`) $do_format_txt = false; //disable OCR when not available
-if(!(`ls $CONVERT` && `ls $IDENTIFY` && `$IDENTIFY -list Format | grep -i pdf`)) $do_format_pdf = false; //disable PDF when not available
-if(!`ls $PDFUNITE`) $do_append_pdf = false; //disable PDF books when merge tool is not available
+$SCANIMAGE = find_binary("scanimage"); //scanimage binary (sane)
+$GOCR      = find_binary("gocr");      //optional ocr binary
+$PDFUNITE  = find_binary("pdfunite");  //optional PDF merge binary
+$PNMTOJPEG = find_binary("pnmtojpeg", ["/usr/local/netpbm/bin"]); //netpbm pnm to jpeg conversion binary
+$PNMTOTIFF = find_binary("pnmtotiff", ["/usr/local/netpbm/bin"]); //netpbm pnm to tiff conversion binary
+$PNMTOBMP  = find_binary("ppmtobmp", ["/usr/local/netpbm/bin"]);  //netpbm ppm to bmp conversion binary
+$PNMTOPNG  = find_binary("pnmtopng", ["/usr/local/netpbm/bin"]);  //netpbm pnm to png conversion binary
+$CONVERT   = find_binary("convert");   //ImageMagick convert binary
+$IDENTIFY  = find_binary("identify");  //ImageMagick binary used to test for PDF support
+
+if(!$GOCR) $do_format_txt = false; //disable OCR when not available
+if(!$CONVERT && $IDENTIFY && `$IDENTIFY -list Format | grep -i pdf`)) $do_format_pdf = false; //disable PDF when not available
+if(!$PDFUNITE) $do_append_pdf = false; //disable PDF books when merge tool is not available
 
 
 
