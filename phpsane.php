@@ -373,12 +373,13 @@ echo "		</td>
 
 ////////////////////////////////////////////////////////////////////////
 // page body
+$preview_image_src = $preview_images . '?=' . filemtime($preview_images);
 
 echo "
   <table id='page_body' style='height: {$PREVIEW_HEIGHT_PX}px;'>
     <tr>
       <td id='tab_preview'>
-        <img src='$preview_images' id='preview_image' width='$PREVIEW_WIDTH_PX' height='$PREVIEW_HEIGHT_PX' />
+        <img src='$preview_image_src' id='preview_image' width='$PREVIEW_WIDTH_PX' height='$PREVIEW_HEIGHT_PX' />
       </td>
       <td id='tab_menu'>\n";
 if ($scanner_ok) {
