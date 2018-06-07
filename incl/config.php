@@ -377,6 +377,7 @@ if($scanner_ok) {
     $length = strpos($list, "..");
     if ($length === false) {
       $resolution_list = explode("|" , $list);
+      sort($resolution_list, SORT_NUMERIC);
       $resolution_max = (int)end($resolution_list);
       $resolution_min = (int)reset($resolution_list);
     } else {
