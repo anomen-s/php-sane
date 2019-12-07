@@ -304,12 +304,15 @@
     
 ////////////////////////////////////////////////////////
 //////extend scanned document with another page
-<?php if ($action_save && (($format == "pdf" && $do_append_pdf) || ($format == "txt" && $do_append_txt))) {
+<?php if ($action_save && !$append_finalize && (($format == "pdf" && $do_append_pdf) || ($format == "txt" && $do_append_txt))) {
   echo "
-      if(confirm('{$lang[$lang_id][50]}')) {
-        $('#append_file').val('{$file_save}');
-        $('#tab_menu_buttons_accept').click();
-      }";
+      $('#append_file').val('{$file_save}');
+
+      if(!confirm('{$lang[$lang_id][50]}')) {
+        $('#append_finalize').val('true');
+      }
+
+      $('#tab_menu_buttons_accept').click();";
 } ?>
 
 ////////////////////////////////////////////////////////
@@ -325,7 +328,8 @@ echo "<form id='menuForm' action='phpsane.php' method='POST'>
   <input type=hidden name='lang_id' id='lang_id' value='$lang_id'>
   <input type=hidden name='sid' value='$sid'>
   <input type=hidden name='preview_images' value='$preview_images'>
-  <input type=hidden name='append_file' id='append_file' value=''>\n";
+  <input type=hidden name='append_file' id='append_file' value=''>
+  <input type=hidden name='append_finalize' id='append_finalize' value=''>\n";
 if(!$do_file_name) {
   $filename = ($file_name_prefix !== -1 ? $file_name_prefix : $lang[$lang_id][60]) . date("Y-m-d H.i.s", time());
   echo "  <input type=hidden name='file_name' id='file_name' value='$filename'>\n";

@@ -1,6 +1,7 @@
 <?php
   $lang_error=$lang[$lang_id][32];
   $error_input=0;
+  $append_finalize=array_key_exists('append_finalize', $_POST) && $_POST['append_finalize'] == "true";
 
   function scan_error(&$scan_output, &$error_input, $lang_error) {
     $scan_output="!!!!!!!! ".$lang_error." !!!!!!!!";
@@ -116,8 +117,13 @@
       $preview_images = $temp_dir."preview_".$sid.".jpg";
       $cmd_device = $SCANIMAGE." -d ".$scanner." --resolution ".$PREVIEW_DPI."dpi -l 0mm -t 0mm -x ".$MAX_SCAN_WIDTH_MM."mm -y ".$MAX_SCAN_HEIGHT_MM."mm".$cmd_mode.$cmd_brightness.$cmd_contrast.$cmd_usr_opt." | ".$PNMTOJPEG." --quality=50 > ".$preview_images;
     }
-    else if ($action_save) {
-      $file_save = $save_dir.$_POST['file_name'].".".$format;
+    else if ($action_save && $append_finalize) {
+       $path_info = pathinfo($append_file);
+       rename($append_file, $save_dir.$path_info['filename'].".".$path_info['extension']);
+    }
+    else if ($action_save && !$append_finalize) {
+      $path = ($do_append_pdf || $do_append_txt) ? $temp_dir : $save_dir;
+      $file_save = $path.$_POST['file_name'].".".$format;
       if (file_exists($file_save)) {
         $file_save=$save_dir.$_POST['file_name']." ".date("Y-m-d H.i.s",time()).".".$format;
       }
@@ -173,7 +179,7 @@
   }
 
   //merge files
-  if ($action_save && $append_file !== '') {
+  if ($action_save && $append_file !== '' && !$append_finalize) {
     $escaped_file_save = str_replace(" ", "\\ ", $file_save);
     $escaped_append_file = str_replace(" ", "\\ ", $append_file);
   
